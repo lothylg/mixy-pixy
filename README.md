@@ -11,10 +11,19 @@ THEN autofills the search bar with what you clicked on
 WHEN submit on front page
 THEN takes to second page with results AND ability for new search
 WHEN on the results page
-THEN ingredients list and photos of completed cocktail will show and instructions on how to make
+THEN ingredients list and photos of completed cocktail will show and instructions on how to make (will possibly need a placeholder image)
 WHEN a button for "I'm feeling lucky is pressed" 
 THEN a random cocktail with ingredients, instructions, and photos will show. 
 WHEN I click "I'm feeling lucky" too many times
 THEN takes the user to taxi website
 WHEN on the main page 
 THEN we will see suggestions of popular drinks
+**need something for extra library (javascript animation library) - autocomplete. (can't use npm, just use script tag)
+WHEN I switch to a mobile
+THEN the screen media will adjust
+WHEN I have tried a drink
+THEN click a button where a modal shows up and I can review the drink | store review in local storage
+WHEN I am on the main page
+THEN show drinks I have tried in the past and the review
+WHEN on the main page
+THEN we will see a slider of drinks (https://github.com/dynamicweb/swiffy-slider?ref=vanillalist)
