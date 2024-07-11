@@ -1,4 +1,5 @@
 GROUP DOCUMENT: https://docs.google.com/document/d/14X25O209fVwvDH1__Ma7Peq8EwfemSvMXL2cLqir328/edit
+Gary's document for the project: https://docs.google.com/document/d/1qafueKF0-zxFkzEecv4V1kVM83wloy8OMprNsN6nWjQ/edit
 
 In this project - website to be able to search a cocktail database for drinks based on ingredients that are on hand. 
 
