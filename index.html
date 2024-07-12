@@ -40,7 +40,25 @@
     </div>   
 </header>
 <body>
-
+    <form class="alcohol input">
+        <label for="alcoholType">Type of alcohol you have</label>
+        <select name="alcoholTypes" id="alcoholTypes">
+            <option value="tequila">Tequila</option>
+            <option value="vodka">Vokda</option>
+            <option value="rum">Rum</option>
+            <option value="scotch">Scotch</option>
+            <option value="gin">Gin</option>
+            <option value="cognac">Cognac</option>
+            <option value="brandy">Brandy</option>
+            <option value="schnapps">Schnapps</option>
+            <option value="absinthe">Absinthe</option>
+            <option value="whisky">Whisky</option>
+            <option value="vermouth">vermouth</option>
+            <option value="mezcal">Mezcal</option>
+        </select>
+        <label for="ingredientOnHand" id="ingredientsOnHand">Ingredients on hand</label>
+        <input type="text" class="form-control" id="ingredientsList" autocomplete="on"/>
+    </form>
 
     <script type="text/javascript" src="./assets/js/firstpage.js"></script>
     <script type="text/javascript" src="./assets/js/parsedrinks.js"></script>
