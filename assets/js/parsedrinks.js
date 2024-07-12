@@ -78,3 +78,19 @@ const testDrinkData = {
   
   const test = parseDrinkData(testDrinkData);
   console.log(test)
+
+
+
+//   function drinkSelector(){
+//      if(vodka){
+//       api[vodka]
+
+// const return vodka drinkSelector
+//     }
+//   }
+
+//   function ingredientSelector(){
+//     vodkaDrink.description
+//     if vodkaDrink.ingredient has leaves
+//     return ingredients
+//   }
