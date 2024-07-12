@@ -27,3 +27,7 @@ WHEN I am on the main page
 THEN show drinks I have tried in the past and the review
 WHEN on the main page
 THEN we will see a slider of drinks (https://github.com/dynamicweb/swiffy-slider?ref=vanillalist)
+
+
+Photo creds: 
+https://punchdrink.com/articles/best-summer-cocktails-2024/
