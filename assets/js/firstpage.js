@@ -1,6 +1,22 @@
-const button= document.querySelector('submitBtn') //doesn't exsist yet
-const alc= document.getElementById('alcoholTypes')
-const ingredient= document.getElementById('ingredientsOnHand')
+const button= document.querySelector('modalBtn');
+const modalSubmit= document.querySelector('submitBtn');
+const alcoholType = document.querySelector(`#alcoholType`);
+const drinkInputEl = document.querySelector(`#drink-input`);
+const ingredientsList = document.getElementById(`#ingredients-on-hand`);
+const submitEl = document.querySelector('#submit');
+const buttonEl = document.querySelector(`#button`);
+const cocktailOutput = document.querySelector(`#cocktail`);
+
+function readDrinkFromStorage(){
+  let drink = JSON.parse(localStorage.getItem(`drink`));
+
+  if (!drink){
+    drink = [];
+  }
+
+  return drink;
+}
+
 
 const submitObject= { 
   alc: alc.value,
@@ -18,6 +34,7 @@ button.addEventListener('submit', function (event){
   event.preventDefault();
 
 
+
   window.location.href =`./secondpage.html`
 })
 
@@ -32,6 +49,21 @@ function saveToLocalStorage(){
 
 function getFromLocalStorage(){ //example
     localStorage.getItem(drinks)
+
+
+modalSubmit.addEventListner('submit', function(){
+    window.location.href = `./secondpage.html`;
+    
+})
+
+function saveDrinkToLocalStorage(){
+    localStorage.setItem(`drink`, JSON.stringify(drink));
+    console.log(drink)
+}
+
+function getDrinkFromLocalStorage(){
+    localStorage.getItem(`drink`, JSON.stringify(drink));
+    console.log(drink)
 
 }
 
@@ -93,3 +125,53 @@ $(function () {
       source: ingredientsList,
     });
   });
+
+  // have to create some input here in local storage. need to pull drinkName, however it's stored in the API (what is the name of the cocktail)
+function handleDrinkInputSubmit(event) {
+  event.preventDefault();
+
+  const alcoholType = alcoholType.val();
+  const ingredientsOnHand = ingredientsList.val();
+
+  const newDrink = {
+    id: crypto.randomUUID(),
+    drink: drinkName,
+    description: drinkDescription,
+  };
+
+  const drink = readDrinkFromStorage ();
+  drink.push(newDrink);
+
+  // save updated drink array to localStorage
+  saveDrinkToStorage(drink);
+
+  // print drink data back to the screen (should be on secondpage.html)
+  printDrinkData();
+
+  // clear the form inputs
+  alcoholType.val(``);
+  ingredientsOnHand.val=(``);
+}
+
+function drinkResults(event){
+  event.preventDefault();
+  console.log(event);
+
+  if (alcoholType === ingredientsList) {
+    return drink; 
+    // do i reference sending this to the second page on the html?
+      window.location.href = `./secondpage.html`;
+  }
+}
+
+$(document).ready(function () {
+
+  // Add event listeners
+  $("#addTaskForm").on("submit", handleAddTask);
+  $(document).on("click", ".delete-task", handleDeleteTask);
+
+  // Initialize the modal form (example)
+  $("#task-list").on("shown.bs.modal", function () {
+    $("#taskTitle").trigger("focus");
+  });
+});
