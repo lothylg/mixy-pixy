@@ -1,6 +1,4 @@
-const modalButton= document.querySelector('button')
-const alcInput= document.getElementById('search-input') //self example, needs to be changed later
-const ingedientInput= document.getElementById('form-input')//self example, needs to be changed later
+
 
 // this event listner will be for the modal
 
@@ -9,11 +7,11 @@ const ingedientInput= document.getElementById('form-input')//self example, needs
 
 
     //object for input data
-    const submitObject= { 
-    ing: searchInput.value,
-    alc: formatInput.value, 
-    } //ing and alc are current placeholders, will need to be changed to calues from api url
-    console.log(submitObject)
+    // const submitObject= { 
+    // ing: searchInput.value,
+    // alc: formatInput.value, 
+    // } //ing and alc are current placeholders, will need to be changed to calues from api url
+    // console.log(submitObject)
 
 
 

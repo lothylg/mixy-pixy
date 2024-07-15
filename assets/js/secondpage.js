@@ -17,4 +17,11 @@ function createDrinkCards(){
     cardBody.append(cardTitle, cardDesc);
     drinkCard.append(cardImg, cardBody)
 
+
+    return drinkCard
 }
+
+//to do: once json has been parsed, append the information to the elements above 
+//card title will be the drink name from the API (strDrink)
+// card IMG will be picture from the API (strDrinkThumb)
+// cardDesc will be the how to (strInstructions)

@@ -1,15 +1,25 @@
-const button= document.querySelector('modalBtn')
-const modalSubmit= document.querySelector('submitBtn')
+const button= document.querySelector('submitBtn')
+const alc= document.getElementById('alcoholTypes')
+const ingredient= document.getElementById('ingredientsOnHand')
 
-button.addEventListener('click',function(){
-    preventDefault();
-    window.location.href = `./secondpage.html`
-})
+const submitObject= { 
+  alc: alc.value,
+  ingredient: ingredient.value
+  } 
+  console.log(submitObject)
+
+button.addEventListener('submit', event)
+  event.preventDefault();
+  window.location.href =`./secondpage.html`
 
 
-function saveToLocalStorage(){ //example
-    localStorage.setItem(drinks)
-    console.log(drinks)
+
+
+
+
+function saveToLocalStorage(){ 
+    localStorage.setItem(alc, ingredient)
+    console.log(alc, ingredient)
 }
 
 function getFromLocalStorage(){ //example
