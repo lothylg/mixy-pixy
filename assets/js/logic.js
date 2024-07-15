@@ -1,6 +1,6 @@
 
 
-// this event listner will be for the modal
+
 
 // button.addEventListener('click',function (event){
 //     event.preventDefault();
@@ -29,4 +29,4 @@ function makeFetch(urlWithParams){
     fetch(urlWithParams)
 }
 
-parseDrinkData();
+// parseDrinkData();

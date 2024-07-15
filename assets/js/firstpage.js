@@ -1,17 +1,25 @@
-const button= document.querySelector('submitBtn')
+const button= document.querySelector('submitBtn') //doesn't exsist yet
 const alc= document.getElementById('alcoholTypes')
 const ingredient= document.getElementById('ingredientsOnHand')
 
 const submitObject= { 
   alc: alc.value,
-  ingredient: ingredient.value
+  ingredient: ingredient.value //currently being read as null
   } 
   console.log(submitObject)
 
-button.addEventListener('submit', event)
-  event.preventDefault();
-  window.location.href =`./secondpage.html`
+//const stringifyObj= JSON.stringify{submitObject}; 
+//^This is currently throwing an error and I have no idea, syntax looks correct
 
+
+
+button.addEventListener('submit', function (event){
+  //need submit button on form page
+  event.preventDefault();
+
+
+  window.location.href =`./secondpage.html`
+})
 
 
 
@@ -24,7 +32,7 @@ function saveToLocalStorage(){
 
 function getFromLocalStorage(){ //example
     localStorage.getItem(drinks)
-    console.log(drinks)
+
 }
 
 $(function () {
