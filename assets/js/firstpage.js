@@ -10,10 +10,68 @@ const cocktailOutput = document.querySelector(`#cocktail`);
 function readDrinkFromStorage(){
   let drink = JSON.parse(localStorage.getItem(`drink`));
 
+
   if (!drink){
     drink = [];
   }
 
+$(document).ready(function(){
+  $('#secIng').autocomplete({
+    source: ingredientsAutoComp,
+  },{});
+let ingredientsAutoComp = [
+  'Light rum',
+  'Applejack',
+  'Gin',
+  'Dark Rum',
+  'Sweet Vermouth',
+  'Strawberry schnapps',
+  'Scotch',
+  'Apricot brandy',
+  'Triple sec',
+  'Southern Comfort',
+  'Orange Bitters',
+  'Brandy',
+  'Lemon vodka',
+  'Blended Whisky',
+  'Dry Vermouth',
+  'Amaretto',
+  'Tea',
+  'Champagne',
+  'Coffee liqueur',
+  'Bourbon',
+  'Tequila',
+  'Vodka',
+  'Anejo rum',
+  'Bitters',
+  'Sugar',
+  'Kahlua',
+  'Watermelon',
+  'Lime juice',
+  'Irish Whisky',
+  'Apple brandy',
+  'Carbonated water',
+  'Cherry Brandy',
+  'Creme de cacao',
+  'Grenadine',
+  'Port',
+  'Coffee Brandy',
+  'Red Wine',
+  'Rum',
+  'Grapefruit juice',
+  'Ricard',
+  'Sherry',
+  'Cognac',
+  'Sloe gin',
+  'Apple Juice',
+  'Pineapple juice',
+  'Lemon juice',
+  'Sugar syrup',
+  'Milk',
+  'Strawberries',
+  'Chocolate syrup',
+  'Yoghurt',
+];
   return drink;
 }
 
@@ -175,3 +233,4 @@ $(document).ready(function () {
     $("#taskTitle").trigger("focus");
   });
 });
+
