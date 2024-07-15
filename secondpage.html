@@ -9,6 +9,56 @@
     <link rel="stylesheet" href="./assets/css/both.css"/>
 </head>
 <body>
+    <div class="container">
+        <div class="text-center mb-5">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Click Here To Make a Drink</button>
+        </div>
+
+        <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="formModalLabel">Create Drink</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                <form id="drink-input">
+                    <div class = "modal-body">
+                        <div class = "mb-3">
+                            <label for="alcoholType">Type of alcohol you have</label>
+                                <select name="alcoholTypes" id="alcoholTypes">
+                                    <option value="tequila">Tequila</option>
+                                    <option value="vodka">Vokda</option>
+                                    <option value="rum">Rum</option>
+                                    <option value="scotch">Scotch</option>
+                                    <option value="gin">Gin</option>
+                                    <option value="cognac">Cognac</option>
+                                    <option value="brandy">Brandy</option>
+                                    <option value="schnapps">Schnapps</option>
+                                    <option value="absinthe">Absinthe</option>
+                                    <option value="whisky">Whisky</option>
+                                    <option value="vermouth">vermouth</option>
+                                    <option value="mezcal">Mezcal</option>
+                                </select>
+                        </div>
+
+                        <div class = "mb-3">
+                            <label for="ingredientOnHand" id="ingredientsOnHand">Ingredients on hand</label>
+                            <input type="text" class="form-control" id="ingredientsList" autocomplete="on"/>
+                        </div>
+
+                        <div class = "modal-footer">
+                            <button type="button" class="btn btn-secondary">I'm Feeling Lucky</button>
+                            <button type="submit" class="btn btn-primary">Submit Drink Selections</button>
+                        </div>
+                    </div>
+                </form>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script type="text/javascript" src="./assets/js/secondpage.js"></script>
     <script type="text/javascript" src="./assets/js/parsedrinks.js"></script>
     <script type="text/javascript" src="./assets/js/logic.js"></script>
