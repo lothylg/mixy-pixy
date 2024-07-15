@@ -17,10 +17,39 @@ function readDrinkFromStorage(){
   return drink;
 }
 
-button.addEventListener('click',function(){
-    preventDefault();
 
+const submitObject= { 
+  alc: alc.value,
+  ingredient: ingredient.value //currently being read as null
+  } 
+  console.log(submitObject)
+
+//const stringifyObj= JSON.stringify{submitObject}; 
+//^This is currently throwing an error and I have no idea, syntax looks correct
+
+
+
+button.addEventListener('submit', function (event){
+  //need submit button on form page
+  event.preventDefault();
+
+
+
+  window.location.href =`./secondpage.html`
 })
+
+
+
+
+
+function saveToLocalStorage(){ 
+    localStorage.setItem(alc, ingredient)
+    console.log(alc, ingredient)
+}
+
+function getFromLocalStorage(){ //example
+    localStorage.getItem(drinks)
+
 
 modalSubmit.addEventListner('submit', function(){
     window.location.href = `./secondpage.html`;
@@ -35,6 +64,7 @@ function saveDrinkToLocalStorage(){
 function getDrinkFromLocalStorage(){
     localStorage.getItem(`drink`, JSON.stringify(drink));
     console.log(drink)
+
 }
 
 $(function () {
