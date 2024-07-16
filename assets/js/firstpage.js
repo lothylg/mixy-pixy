@@ -1,18 +1,23 @@
 const button= document.querySelector('modalBtn');
 const modalSubmit= document.querySelector('submitBtn');
-const alcoholType = document.querySelector(`#alcoholType`);
+const alc = document.getElementById(`#alcoholType`);
 const drinkInputEl = document.querySelector(`#drink-input`);
-const ingredientsList = document.getElementById(`#ingredients-on-hand`);
+const ingredient = document.getElementById(`#ingredients-on-hand`);
 const submitEl = document.querySelector('#submit');
 const buttonEl = document.querySelector(`#button`);
-const cocktailOutput = document.querySelector(`#cocktail`);
+const cocktail = document.querySelector(`#cocktail`);
 
-function readDrinkFromStorage(){
-  let drink = JSON.parse(localStorage.getItem(`drink`));
+let drink = localStorage.getItem(`drink`);
+
+cocktail.textContent = drink;
+
+// unsure if we have the right stuff entered in to read it from local storage? Might have to make this wholistic for the entire cocktail output? unsure.
+function readIngredientFromStorage(){
+  let ingredient = JSON.parse(localStorage.getItem(`#ingredients-on-hand`));
 
 
-  if (!drink){
-    drink = [];
+  if (!ingredient){
+    ingredient = [];
   }
 }
 
@@ -77,58 +82,61 @@ let ingredientsAutoComp = [
   return drink;
 
 
+// changed 101 and 102
+function submitData() {
+  const alc = document.getElementById('alcoholType');
+  const ingredient = document.getElementById('ingredients-on-hand');
 
-const submitObject= { 
-  alc: alc.value,
-  ingredient: ingredient.value //currently being read as null
-  } 
-  console.log(submitObject)
+  const submitObject = { 
+    alc: alc.value,
+    ingredient: ingredient.value
+  };
 
-//const stringifyObj= JSON.stringify{submitObject}; 
-//^This is currently throwing an error and I have no idea, syntax looks correct
+  console.log(submitObject);
 
+  const stringifyObj = JSON.stringify(submitObject);
+  console.log(stringifyObj);
 
 
 button.addEventListener('submit', function (event){
-  //need submit button on form page
   event.preventDefault();
+  if (alc === ingredient) {
+    return cocktail; 
+  };
+// added these localstorage things below
+  localStorage.setItem(`alc`, alc);
+  localStorage.setItem(`ingredient`, ingredient);
+  // renderLastRegistered();
 
-
-
-  window.location.href =`./secondpage.html`
+  // window.location.href =`./secondpage.html`
 })
+};
+console.log(submitData);
 
-
-
-
-
-// function saveToLocalStorage(){ 
-//     localStorage.setItem(alc, ingredient)
-//     console.log(alc, ingredient)
-// }
 
 // function getFromLocalStorage(){ //example
 //     localStorage.getItem(drinks)
 // }
 
-modalSubmit.addEventListner('submit', function(){
-    window.location.href = `./secondpage.html`;
+// modalSubmit.addEventListner('submit', function(){
+//     window.location.href = `./secondpage.html`;
     
-})
+// })
+// };
 
-function saveDrinkToLocalStorage(){
-    localStorage.setItem(`drink`, JSON.stringify(drink));
-    console.log(drink)
+function saveCocktailToLocalStorage(){
+    localStorage.setItem(`#cocktail`, JSON.stringify(cocktail));
+    console.log(cocktail)
 }
 
-function getDrinkFromLocalStorage(){
-    localStorage.getItem(`drink`, JSON.stringify(drink));
-    console.log(drink)
+function getCocktailFromLocalStorage(){
+    localStorage.getItem(`#cocktail`, JSON.stringify(cocktail));
+    console.log(cocktail)
 
 }
 
 $(function () {
-    const ingredientsList = [
+    const ingredient = [
       'Light rum',
       'Applejack',
       'Gin',
@@ -181,8 +189,8 @@ $(function () {
       'Chocolate syrup',
       'Yoghurt',
     ];
-    $('#ingredientsList').autocomplete({
-      source: ingredientsList,
+    $('#ingredients-on-hand').autocomplete({
+      source: ingredient,
     });
   });
 
@@ -190,8 +198,8 @@ $(function () {
 function handleDrinkInputSubmit(event) {
   event.preventDefault();
 
-  const alcoholType = alcoholType.val();
-  const ingredientsOnHand = ingredientsList.val();
+  const alc = alc.val();
+  const ingredient = ingredient.val();
 
   const newDrink = {
     id: crypto.randomUUID(),
@@ -199,40 +207,30 @@ function handleDrinkInputSubmit(event) {
     description: drinkDescription,
   };
 
-  const drink = readDrinkFromStorage ();
+  const drink = readCocktailFromStorage ();
   drink.push(newDrink);
 
   // save updated drink array to localStorage
-  saveDrinkToStorage(drink);
+  saveCocktailToStorage(drink);
 
   // print drink data back to the screen (should be on secondpage.html)
-  printDrinkData();
+  printCocktailData();
 
   // clear the form inputs
-  alcoholType.val(``);
-  ingredientsOnHand.val=(``);
-}
+  alc.val(``);
+  ingredient.val(``);
+};
+console.log(newDrink);
 
-function drinkResults(event){
+function cocktailResults(event){
   event.preventDefault();
   console.log(event);
 
-  if (alcoholType === ingredientsList) {
-    return drink; 
+  if (alc === ingredient) {
+    return cocktail; 
     // do i reference sending this to the second page on the html?
-      window.location.href = `./secondpage.html`;
+      // window.location.href = `./secondpage.html`;
   }
-}
+};
 
-$(document).ready(function () {
-
-  // Add event listeners
-  $("#addTaskForm").on("submit", handleAddTask);
-  $(document).on("click", ".delete-task", handleDeleteTask);
-
-  // Initialize the modal form (example)
-  $("#task-list").on("shown.bs.modal", function () {
-    $("#taskTitle").trigger("focus");
-  });
-});
-
+};
