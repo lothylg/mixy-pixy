@@ -19,27 +19,13 @@ function readIngredientFromStorage(){
   if (!ingredient){
     ingredient = [];
   }
+}
 
-  return ingredient;
-};
-console.log(readIngredientFromStorage);
+// $(document).ready(function(){
+//   $('#secIng').autocomplete({
+//     source: ingredientsAutoComp,
+// },{});
 
-function readAlcFromStorage(){
-  let alc = JSON.parse(localStorage.getItem(`alcoholType`));
-
-
-  if (!alc){
-    alc = [];
-  }
-
-  return alc;
-};
-console.log(readAlcFromStorage);
-
-$(document).ready(function(){
-  $('#secIng').autocomplete({
-    source: ingredientsAutoComp,
-  },{});
 let ingredientsAutoComp = [
   'Light rum',
   'Applejack',
@@ -94,7 +80,7 @@ let ingredientsAutoComp = [
   'Yoghurt',
 ];
   return drink;
-});
+
 
 // changed 101 and 102
 function submitData() {
@@ -128,17 +114,9 @@ button.addEventListener('submit', function (event){
 console.log(submitData);
 
 
-
-
-
-function saveToLocalStorage(){ 
-    localStorage.setItem(alc, ingredient)
-    console.log(alc, ingredient)
-}
-
-function getFromLocalStorage(){ //example
-    localStorage.getItem(cocktail)
-
+// function getFromLocalStorage(){ //example
+//     localStorage.getItem(drinks)
+// }
 
 // modalSubmit.addEventListner('submit', function(){
 //     window.location.href = `./secondpage.html`;
