@@ -24,15 +24,14 @@ function cardPrimary(newDrinkObj){
     const modalIng= $('<p>').text()//val to be pulled from api, all the ing+ mix data
     const modalInstructions= $('<p>').text()//val to be pulled from api, drink instructions
     const modalFooter=$('<div>').addClass('modal-footer')//append the two bottons to this.
-    const modalReview= $('<form>').text().attr('hidden')//Keep this hidden until a review drink button has been hit at the bottom finish this modal, might need to be in separate function
-    // const modalReviewBtn= $('<button>').addClass('btn btn-primary').text('Leave a Review?')//when this is clicked, reveal an invisible form field for the review
-    const modalCloseBtn= $('<button>').addClass('btn btn-secondary').text('Leave a Review?')//might need to flip order with above line
+    const modalSaveBtn= $('<button>').addClass('btn btn-primary').text('Save Drink')//might need to flip order with above line
+    const modalCloseBtn= $('<button>').addClass('btn btn-secondary').text('Close')
 
     cardBody.append(cardDrinkName, modalMoreInfoBtn)
     cards.append(cardImg, cardBody)
     modal.append(modalHeader, modalBody)
     modalBody.append(modalIng, modalInstructions, modalFooter)
-    modalFooter.append(modalReviewBtn, modalCloseBtn )
+    modalFooter.append(modalSaveBtn, modalCloseBtn )
     
 
 }

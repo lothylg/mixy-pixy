@@ -1,81 +1,65 @@
-// const button= document.querySelector('modalBtn');
-// const modalSubmit= document.querySelector('submitBtn');
-// const alc = document.getElementById(`#alcoholType`);
-// const drinkInputEl = document.querySelector(`#drink-input`);
-// const ingredient = document.getElementById(`#ingredients-on-hand`);
-// const submitEl = document.querySelector('#submit');
-// const buttonEl = document.querySelector(`#button`);
-// const cocktail = document.querySelector(`#cocktail`);
+const button= document.getElementById('submitBtn');
+
+button.addEventListener('submit', function() {
+    // call the function to fetch 
+    window.location.href =``
+  });
 
 
 
-// // unsure if we have the right stuff entered in to read it from local storage? Might have to make this wholistic for the entire cocktail output? unsure.
-// function readIngredientFromStorage(){
-//   let ingredient = JSON.parse(localStorage.getItem(`#ingredients-on-hand`));
-
-//   if (!ingredient){
-//     ingredient = [];
-//   }
-// }
-
-// // $(document).ready(function(){
-// //   $('#secIng').autocomplete({
-// //     source: ingredientsAutoComp,
-// // },{});
-
-// let ingredientsAutoComp = [
-//   'Light rum',
-//   'Applejack',
-//   'Gin',
-//   'Dark Rum',
-//   'Sweet Vermouth',
-//   'Strawberry schnapps',
-//   'Scotch',
-//   'Apricot brandy',
-//   'Triple sec',
-//   'Southern Comfort',
-//   'Orange Bitters',
-//   'Brandy',
-//   'Lemon vodka',
-//   'Blended Whisky',
-//   'Dry Vermouth',
-//   'Amaretto',
-//   'Tea',
-//   'Champagne',
-//   'Coffee liqueur',
-//   'Bourbon',
-//   'Tequila',
-//   'Vodka',
-//   'Anejo rum',
-//   'Bitters',
-//   'Sugar',
-//   'Kahlua',
-//   'Watermelon',
-//   'Lime juice',
-//   'Irish Whisky',
-//   'Apple brandy',
-//   'Carbonated water',
-//   'Cherry Brandy',
-//   'Creme de cacao',
-//   'Grenadine',
-//   'Port',
-//   'Coffee Brandy',
-//   'Red Wine',
-//   'Rum',
-//   'Grapefruit juice',
-//   'Ricard',
-//   'Sherry',
-//   'Cognac',
-//   'Sloe gin',
-//   'Apple Juice',
-//   'Pineapple juice',
-//   'Lemon juice',
-//   'Sugar syrup',
-//   'Milk',
-//   'Strawberries',
-//   'Chocolate syrup',
-//   'Yoghurt',
-// ];
+let ingredientsAutoComp = [
+  'Light rum',
+  'Applejack',
+  'Gin',
+  'Dark Rum',
+  'Sweet Vermouth',
+  'Strawberry schnapps',
+  'Scotch',
+  'Apricot brandy',
+  'Triple sec',
+  'Southern Comfort',
+  'Orange Bitters',
+  'Brandy',
+  'Lemon vodka',
+  'Blended Whisky',
+  'Dry Vermouth',
+  'Amaretto',
+  'Tea',
+  'Champagne',
+  'Coffee liqueur',
+  'Bourbon',
+  'Tequila',
+  'Vodka',
+  'Anejo rum',
+  'Bitters',
+  'Sugar',
+  'Kahlua',
+  'Watermelon',
+  'Lime juice',
+  'Irish Whisky',
+  'Apple brandy',
+  'Carbonated water',
+  'Cherry Brandy',
+  'Creme de cacao',
+  'Grenadine',
+  'Port',
+  'Coffee Brandy',
+  'Red Wine',
+  'Rum',
+  'Grapefruit juice',
+  'Ricard',
+  'Sherry',
+  'Cognac',
+  'Sloe gin',
+  'Apple Juice',
+  'Pineapple juice',
+  'Lemon juice',
+  'Sugar syrup',
+  'Milk',
+  'Strawberries',
+  'Chocolate syrup',
+  'Yoghurt',
+];
 
 
 
