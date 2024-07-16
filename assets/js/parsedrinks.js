@@ -57,6 +57,30 @@ const testDrinkData = {
     dateModified: "2015-08-18 14:42:59"
   };
 
+  // store each drink individually: use array of ingredients
+  const drinkToStore = {
+    name: "",
+    description: "",
+    image: "",
+    ingredients: []
+  }
+
+  localStorage.setItem("tequilacocktail", JSON.stringify(drinkToStore) )
+  localStorage.getItem("tequilacocktail")
+  
+  const alldrinks = []
+  localStorage.setItem("alldrinks", JSON.stringify("alldrinks") )
+  localStorage.getItem("alldrinks")  // JSON.parse
+
+  function findDrink(name){
+    return alldrinks.find( function(drink)){
+      return drink.name = name
+    }
+  }
+
+  const drinkINeed = findDrink("tequila cocktail")
+
+
   // Function to parse drink data and return ingredients with their measures
 function parseDrinkData(drinkObj) {
   let mixdata = [];
@@ -80,6 +104,24 @@ function parseDrinkData(drinkObj) {
 
 const test = parseDrinkData(testDrinkData);
 console.log(test);
+
+const drinkCollection = []
+
+async function getDataFromApi(){
+  const resp = await fetch("...")
+  const data = await resp.json();
+  // loop through all drinks that are returned
+  for( let i=0; i< data.drinks.length; i++){
+    const currentDrink = data.drinks[i]
+    const newDrinkObj = {
+      id: currentDrink.idDrink,
+      category: currentDrink.strCategory,
+      instructions: currentDrink.strInstructions,
+      ingredients: parseDrinkData(currentDrink)
+    }
+    drinkCollection.push(newDrinkObj)
+  }
+}
   
   
   // // After you query the api, you will get back one or more drink objects. If you call this function and pass in 

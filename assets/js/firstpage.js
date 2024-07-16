@@ -7,6 +7,10 @@ const submitEl = document.querySelector('#submit');
 const buttonEl = document.querySelector(`#button`);
 const cocktail = document.querySelector(`#cocktail`);
 
+let drink = localStorage.getItem(`drink`);
+
+cocktail.textContent = drink;
+
 // unsure if we have the right stuff entered in to read it from local storage? Might have to make this wholistic for the entire cocktail output? unsure.
 function readIngredientFromStorage(){
   let ingredient = JSON.parse(localStorage.getItem(`#ingredients-on-hand`));
@@ -92,10 +96,10 @@ let ingredientsAutoComp = [
   return drink;
 });
 
-
+// changed 101 and 102
 function submitData() {
-  const alc = document.getElementById('alcInput');
-  const ingredient = document.getElementById('ingredientInput');
+  const alc = document.getElementById('alcoholType');
+  const ingredient = document.getElementById('ingredients-on-hand');
 
   const submitObject = { 
     alc: alc.value,
@@ -110,8 +114,15 @@ function submitData() {
 
 button.addEventListener('submit', function (event){
   event.preventDefault();
+  if (alc === ingredient) {
+    return cocktail; 
+  };
+// added these localstorage things below
+  localStorage.setItem(`alc`, alc);
+  localStorage.setItem(`ingredient`, ingredient);
+  // renderLastRegistered();
 
-  window.location.href =`./secondpage.html`
+  // window.location.href =`./secondpage.html`
 })
 };
 console.log(submitData);
@@ -129,11 +140,11 @@ function getFromLocalStorage(){ //example
     localStorage.getItem(cocktail)
 
 
-modalSubmit.addEventListner('submit', function(){
-    window.location.href = `./secondpage.html`;
+// modalSubmit.addEventListner('submit', function(){
+//     window.location.href = `./secondpage.html`;
     
-})
-};
+// })
+// };
 
 function saveCocktailToLocalStorage(){
     localStorage.setItem(`#cocktail`, JSON.stringify(cocktail));
@@ -244,3 +255,4 @@ function cocktailResults(event){
   }
 };
 
+};
