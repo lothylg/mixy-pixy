@@ -1,4 +1,8 @@
+
+
+
 // Here is an example from the api. You can use this for testing the parsing function below.
+
 const testDrinkData = {
     idDrink: "11007",
     strDrink: "Margarita",
@@ -51,33 +55,57 @@ const testDrinkData = {
     strImageAttribution: "Cocktailmarler",
     strCreativeCommonsConfirmed: "Yes",
     dateModified: "2015-08-18 14:42:59"
-  }
+  };
+
+  // Function to parse drink data and return ingredients with their measures
+function parseDrinkData(drinkObj) {
+  let mixdata = [];
+  // Loop over each of the object keys in the drink data
+  Object.keys(drinkObj).forEach(function(key) {
+    let ingredientData = { name: "", measure: "" };
+    // If the key begins with "strIngredient" AND if it has a value other than null then we want to look at it
+    if (key.includes("strIngredient") && drinkObj[key] !== null) {
+      ingredientData.name = drinkObj[key];
+      // Get the number associated with the ingredient so we get the associated measure
+      const ingredientNumber = key.split("strIngredient")[1];
+      const measureKeyName = `strMeasure${ingredientNumber}`;
+      // Add the measure info for that ingredient, or an empty string if null
+      ingredientData.measure = drinkObj[measureKeyName] || "";
+      // Now add the ingredient data object to our array of mix data
+      mixdata.push(ingredientData);
+    }
+  });
+  return mixdata;
+};
+
+const test = parseDrinkData(testDrinkData);
+console.log(test);
   
   
-  // After you query the api, you will get back one or more drink objects. If you call this function and pass in 
-  // the drink object, you'll get back an array of all ingredients and the measure associated with each one.
-  function parseDrinkData(drinkObj){
-    let mixdata = []
-    // loop over each of the object keys in the drink data 
-    Object.keys(drinkObj).forEach( function(key){
-      let ingredientData = { name: "", measure: null }
-      // if the key begins with "strIngredient" AND if it has a value other than null then we want to look at it 
-      if( key.includes("strIngredient") && drinkObj[key] !== null  ){
-        ingredientData.name = drinkObj[key];
-        // get the number associated with the ingredient so we get the associated measure
-        const ingredientNumber = key.split("strIngredient")[1]
-        const measureKeyName = `strMeasure${ingredientNumber}`
-        // add the measure info for that ingredient
-        ingredientData.measure = drinkObj[measureKeyName]
-        // now add the ingredient data object to our array of mix data
-        mixdata.push(ingredientData)
-      }
-    })
-    return mixdata
-  }
+  // // After you query the api, you will get back one or more drink objects. If you call this function and pass in 
+  // // the drink object, you'll get back an array of all ingredients and the measure associated with each one.
+  // function parseDrinkData(drinkObj){
+  //   let mixdata = []
+  //   // loop over each of the object keys in the drink data 
+  //   Object.keys(drinkObj).forEach(function(key){
+  //     let ingredientData = { name: "", measure: "" };
+  //     // if the key begins with "strIngredient" AND if it has a value other than null then we want to look at it 
+  //     if( key.includes("strIngredient") && drinkObj[key] !== null  ){
+  //       ingredientData.name = drinkObj[key];
+  //       // get the number associated with the ingredient so we get the associated measure
+  //       const ingredientNumber = key.split("strIngredient")[1];
+  //       const measureKeyName = `strMeasure${ingredientNumber}`
+  //       // add the measure info for that ingredient
+  //       ingredientData.measure = drinkObj[measureKeyName] || "";
+  //       // now add the ingredient data object to our array of mix data
+  //       mixdata.push(ingredientData);
+  //     }
+  //   })
+  //   return mixdata
+  // }
   
-  const test = parseDrinkData(testDrinkData);
-  console.log(test)
+  // const test = parseDrinkData(testDrinkData);
+  // console.log(test)
 
 
 
