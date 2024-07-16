@@ -58,7 +58,9 @@
 //     dateModified: "2015-08-18 14:42:59"
 //   };
 
+
 const alldrinks = []; 
+
 
 async function getDataFromApi() {
   try {
@@ -73,8 +75,8 @@ async function getDataFromApi() {
         const newDrinkObj = {
           drink: currentDrink.strDrink,
           alcohol: currentDrink.strIngredient1,
-          instructions: currentDrink.strInstructions,
           ingredients: parseDrinkData(currentDrink),
+          instructions: currentDrink.strInstructions,
           image: currentDrink.strDrinkThumb, // Use correct property for image
         };
         alldrinks.push(newDrinkObj); // Add the new drink object to the array
@@ -90,16 +92,16 @@ async function getDataFromApi() {
       // Example usage of findDrink function
       const drinkINeed = findDrink(storedDrinks, "A1");
       console.log(drinkINeed);
+
+      // Example usage of searchByAlcoholAndIngredients function
+      const filteredDrinks = searchByAlcoholAndIngredients("Gin", ["Grenadine"]);
+      localStorage.setItem("filteredDrinks", JSON.stringify(filteredDrinks));
+      console.log(filteredDrinks);
+
     }
   } catch (error) {
     console.error("Error fetching data from API:", error);
   }
-}
-
-function findDrink(drinks, drinkName) {
-  return drinks.find(function (drink) {
-    return drink.drink === drinkName;
-  });
 }
 
 // Function to parse drink data and return ingredients with their measures
@@ -124,6 +126,7 @@ function parseDrinkData(drinkObj) {
 }
 
 
+
 // Call the function to fetch data from API
 getDataFromApi();
 
@@ -142,3 +145,20 @@ getDataFromApi();
 //     if vodkaDrink.ingredient has leaves
 //     return ingredients
 //   }
+
+// search by alcohol type + ingredients
+function searchByAlcoholAndIngredients(alcoholType, ingredientNames) {
+  const filteredDrinks = alldrinks.filter(drink => {
+    const hasAlcohol = drink.alcohol === alcoholType;
+    const hasIngredients = ingredientNames.every(name => 
+      drink.ingredients.some(ingredient => ingredient.name === name)
+    );
+    return hasAlcohol && hasIngredients;
+  });
+
+  return filteredDrinks;
+}
+
+// Call the function to fetch data from API
+getDataFromApi();
+
