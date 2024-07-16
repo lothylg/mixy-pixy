@@ -58,7 +58,9 @@
 //     dateModified: "2015-08-18 14:42:59"
 //   };
 
-const alldrinks = [];
+
+const alldrinks = []; 
+
 
 async function getDataFromApi() {
   try {
@@ -77,7 +79,26 @@ async function getDataFromApi() {
         alldrinks.push(newDrinkObj);
       });
 
+
       populateAlcoholDropdown();
+
+      // Store the array of drinks in localStorage
+      localStorage.setItem("alldrinks", JSON.stringify(alldrinks));
+
+      // Retrieve the stored drinks from localStorage
+      const storedDrinks = JSON.parse(localStorage.getItem("alldrinks"));
+      console.log(storedDrinks);
+
+      // Example usage of findDrink function
+      const drinkINeed = findDrink(storedDrinks, "A1");
+      console.log(drinkINeed);
+
+      // Example usage of searchByAlcoholAndIngredients function
+      const filteredDrinks = searchByAlcoholAndIngredients("Gin", ["Grenadine"]);
+      localStorage.setItem("filteredDrinks", JSON.stringify(filteredDrinks));
+      console.log(filteredDrinks);
+
+
     }
   } catch (error) {
     console.error("Error fetching data from API:", error);
@@ -98,6 +119,7 @@ function parseDrinkData(drinkObj) {
   });
   return mixdata;
 }
+
 
 function populateAlcoholDropdown() {
   const alcoholDropdown = document.getElementById("alcoholDropdown");
@@ -131,6 +153,31 @@ function populateIngredientDropdown() {
 }
 
 function searchByAlcoholAndIngredients(alcoholType, ingredientName) {
+
+
+
+// Call the function to fetch data from API
+getDataFromApi();
+
+
+
+//   function drinkSelector(){
+//      if(vodka){
+//       api[vodka]
+
+// const return vodka drinkSelector
+//     }
+//   }
+
+//   function ingredientSelector(){
+//     vodkaDrink.description
+//     if vodkaDrink.ingredient has leaves
+//     return ingredients
+//   }
+
+// search by alcohol type + ingredients
+function searchByAlcoholAndIngredients(alcoholType, ingredientNames) {
+
   const filteredDrinks = alldrinks.filter(drink => {
     const hasAlcohol = drink.alcohol === alcoholType;
     const hasIngredient = drink.ingredients.some(ingredient => ingredient.name === ingredientName);
@@ -170,3 +217,4 @@ document.getElementById("drinkForm").addEventListener("submit", function(event) 
 
 // Call the function to fetch data from API
 getDataFromApi();
+
