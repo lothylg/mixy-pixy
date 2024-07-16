@@ -44,18 +44,93 @@
         </div>
     </div>
 
-    </div>
     <div class="header">
         <h1 style="text-align: center;"> Mixy Pixy</h1>
         <p style="text-align: center;"> Mix, Drink & Repeat</p>
     </div>   
 </header>
 <body>
+    <head>     
+        <style>
+        .dropbtn {
+          width: 200px;
+          background-color: rgb(0, 0, 0);
+          color: white;
+          padding: 16px;
+          font-size: 20px;
+          border: none
+        }
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .dropdown-content {
+          font-size: 20px;
+          text-align: center;
+          width: 200px;
+          align-items: flex-end;
+          display: none;
+          position: absolute;
+          background-color: rgb(255, 255, 255);
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        
+        .dropdown-content a:hover {background-color: #000000}
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        .dropdown:hover .dropbtn {
+          background-color: #000000;
+        }
+        </style>
+        </head>
+        <body>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+        <!-- NEED href links -->
+        <div class="dropdown">
+          <button class="dropbtn">Posion</button>
+          <div class="dropdown-content">
+            <option value="tequila">Tequila</option>
+            <option value="vodka">Vokda</option>
+            <option value="rum">Rum</option>
+            <option value="scotch">Scotch</option>
+            <option value="gin">Gin</option>
+            <option value="cognac">Cognac</option>
+            <option value="brandy">Brandy</option>
+            <option value="schnapps">Schnapps</option>
+            <option value="absinthe">Absinthe</option>
+            <option value="whisky">Whisky</option>
+            <option value="vermouth">vermouth</option>
+            <option value="mezcal">Mezcal</option>
 
-    <form id="drink-input" method="get" autocomplete="off" >
+          </div>
+        </div>
+        
+        
+        </body>
+        </html>
+
+    <!-- <form id="alcohol-input" method="get" autocomplete="off" >
         <div>
-            <label for="alc">Type of alcohol you have</label>
-            <select name="alcoholType" id="alcoholType">
+            <label for="alcoholType">Type of alcohol you have</label>
+            <select name="alcoholTypes" id="alcoholTypes">
                 <option value="tequila">Tequila</option>
                 <option value="vodka">Vokda</option>
                 <option value="rum">Rum</option>
@@ -68,25 +143,28 @@
                 <option value="whisky">Whisky</option>
                 <option value="vermouth">vermouth</option>
                 <option value="mezcal">Mezcal</option>
-            </select>
+            </select> -->
+        
         </div>
         <div>
-            <label for="ingredient" id="ingredients-on-hand">Ingredients on hand</label>
-        </div>
-        <div>
-            <input type="text" class="form-control" id="secIng"/>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit Drink Selections</button>
+            <!-- <label for="ingredientOnHand" id="ingredientsOnHand">Ingredients on hand</label> -->
+        
+         <style> 
+
+</style>
+            <!-- <input type="text" class="form-control" id="secIng"/>
+           <input type="text" class="form-control" id="secIng" placeholder="Ingredients on Hand">
+        <input type="submit"> -->
     </form>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/js/firstpage.js"></script>
     <script type="text/javascript" src="./assets/js/parsedrinks.js"></script>
     <script type="text/javascript" src="./assets/js/logic.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
- 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 </body>
 </html>

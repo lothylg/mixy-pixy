@@ -3,21 +3,27 @@ body {
   background-image: url("https://images.unsplash.com/photo-1619151467015-b0eb2ed59b80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
  }
 .swiffy-slider {
-    height: 100px;
+    height: 150px;
 }
+/* body {
+  filter:blur(3px);
+} */
 
 .header {
+  border: 5px solid rgb(0, 0, 0);
+  padding: 25px;
+  margin: 20px;
   filter: blur( 1px);
-  padding: 60px;
-  text-shadow: 3px 3px 2px rgb(110, 107, 107);
-  background: #ffffff;
+  text-shadow: 3px 3px 4px rgb(110, 107, 107);
+  background: #ada9a9;
   color: rgb(0, 0, 0);
   font-size: 40px;
   font-family: "Playwrite CU", cursive;
   font-style: normal;
 }
+
 #result {
-    border: 1px dotted #ccc;
+    border: px dotted #ccc;
     padding: 3px;
   }
   #result ul {
