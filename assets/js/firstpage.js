@@ -14,11 +14,13 @@ function readDrinkFromStorage(){
   if (!drink){
     drink = [];
   }
+}
 
-$(document).ready(function(){
-  $('#secIng').autocomplete({
-    source: ingredientsAutoComp,
-  },{});
+// $(document).ready(function(){
+//   $('#secIng').autocomplete({
+//     source: ingredientsAutoComp,
+// },{});
+
 let ingredientsAutoComp = [
   'Light rum',
   'Applejack',
@@ -73,7 +75,7 @@ let ingredientsAutoComp = [
   'Yoghurt',
 ];
   return drink;
-}
+
 
 
 const submitObject= { 
@@ -100,14 +102,14 @@ button.addEventListener('submit', function (event){
 
 
 
-function saveToLocalStorage(){ 
-    localStorage.setItem(alc, ingredient)
-    console.log(alc, ingredient)
-}
+// function saveToLocalStorage(){ 
+//     localStorage.setItem(alc, ingredient)
+//     console.log(alc, ingredient)
+// }
 
-function getFromLocalStorage(){ //example
-    localStorage.getItem(drinks)
-
+// function getFromLocalStorage(){ //example
+//     localStorage.getItem(drinks)
+// }
 
 modalSubmit.addEventListner('submit', function(){
     window.location.href = `./secondpage.html`;
