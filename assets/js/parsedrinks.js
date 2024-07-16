@@ -3,6 +3,7 @@
 
 // Here is an example from the api. You can use this for testing the parsing function below.
 
+
 const testDrinkData = {
     idDrink: "11007",
     strDrink: "Margarita",
@@ -75,17 +76,58 @@ const testDrinkData = {
   function findDrink(name){
     return alldrinks.find(function(drink)){
       return drink.name = name
+
+ 
+const alldrinks = []; 
+
+async function getDataFromApi() {
+  try {
+    const resp = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=");
+    const data = await resp.json();
+
+    // Ensure data.drinks is not null or undefined
+    if (data.drinks) {
+      // Loop through all drinks that are returned
+      for (let i = 0; i < data.drinks.length; i++) {
+        const currentDrink = data.drinks[i];
+        const newDrinkObj = {
+          drink: currentDrink.strDrink,
+          alcohol: currentDrink.strIngredient1,
+          instructions: currentDrink.strInstructions,
+          ingredients: parseDrinkData(currentDrink),
+          image: currentDrink.strDrinkThumb, // Use correct property for image
+        };
+        alldrinks.push(newDrinkObj); // Add the new drink object to the array
+      }
+      
+      // Store the array of drinks in localStorage
+      localStorage.setItem("alldrinks", JSON.stringify(alldrinks));
+      
+      // Retrieve the stored drinks from localStorage
+      const storedDrinks = JSON.parse(localStorage.getItem("alldrinks"));
+      console.log(storedDrinks);
+
+      // Example usage of findDrink function
+      const drinkINeed = findDrink(storedDrinks, "A1");
+      console.log(drinkINeed);
+
     }
+  } catch (error) {
+    console.error("Error fetching data from API:", error);
   }
+}
 
-  const drinkINeed = findDrink("tequila cocktail")
+function findDrink(drinks, drinkName) {
+  return drinks.find(function (drink) {
+    return drink.drink === drinkName;
+  });
+}
 
-
-  // Function to parse drink data and return ingredients with their measures
+// Function to parse drink data and return ingredients with their measures
 function parseDrinkData(drinkObj) {
   let mixdata = [];
   // Loop over each of the object keys in the drink data
-  Object.keys(drinkObj).forEach(function(key) {
+  Object.keys(drinkObj).forEach(function (key) {
     let ingredientData = { name: "", measure: "" };
     // If the key begins with "strIngredient" AND if it has a value other than null then we want to look at it
     if (key.includes("strIngredient") && drinkObj[key] !== null) {
@@ -93,61 +135,19 @@ function parseDrinkData(drinkObj) {
       // Get the number associated with the ingredient so we get the associated measure
       const ingredientNumber = key.split("strIngredient")[1];
       const measureKeyName = `strMeasure${ingredientNumber}`;
-      // Add the measure info for that ingredient, or an empty string if null
-      ingredientData.measure = drinkObj[measureKeyName] || "";
+      // Add the measure info for that ingredient, or "As much as you like!" if null
+      ingredientData.measure = drinkObj[measureKeyName] || "As much as you like!";
       // Now add the ingredient data object to our array of mix data
       mixdata.push(ingredientData);
     }
   });
   return mixdata;
-};
-
-const test = parseDrinkData(testDrinkData);
-console.log(test);
-
-const drinkCollection = []
-
-async function getDataFromApi(){
-  const resp = await fetch("...")
-  const data = await resp.json();
-  // loop through all drinks that are returned
-  for( let i=0; i< data.drinks.length; i++){
-    const currentDrink = data.drinks[i]
-    const newDrinkObj = {
-      id: currentDrink.idDrink,
-      category: currentDrink.strCategory,
-      instructions: currentDrink.strInstructions,
-      ingredients: parseDrinkData(currentDrink)
-    }
-    drinkCollection.push(newDrinkObj)
-  }
 }
-  
-  
-  // // After you query the api, you will get back one or more drink objects. If you call this function and pass in 
-  // // the drink object, you'll get back an array of all ingredients and the measure associated with each one.
-  // function parseDrinkData(drinkObj){
-  //   let mixdata = []
-  //   // loop over each of the object keys in the drink data 
-  //   Object.keys(drinkObj).forEach(function(key){
-  //     let ingredientData = { name: "", measure: "" };
-  //     // if the key begins with "strIngredient" AND if it has a value other than null then we want to look at it 
-  //     if( key.includes("strIngredient") && drinkObj[key] !== null  ){
-  //       ingredientData.name = drinkObj[key];
-  //       // get the number associated with the ingredient so we get the associated measure
-  //       const ingredientNumber = key.split("strIngredient")[1];
-  //       const measureKeyName = `strMeasure${ingredientNumber}`
-  //       // add the measure info for that ingredient
-  //       ingredientData.measure = drinkObj[measureKeyName] || "";
-  //       // now add the ingredient data object to our array of mix data
-  //       mixdata.push(ingredientData);
-  //     }
-  //   })
-  //   return mixdata
-  // }
-  
-  // const test = parseDrinkData(testDrinkData);
-  // console.log(test)
+
+// Call the function to fetch data from API
+getDataFromApi();
+
+
 
 
 
@@ -164,3 +164,14 @@ async function getDataFromApi(){
 //     if vodkaDrink.ingredient has leaves
 //     return ingredients
 //   }
+
+  // store each drink individually: use array of ingredients
+  // const drinkToStore = {
+  //   name: "",
+  //   description: "",
+  //   image: "",
+  //   ingredients: []
+  // }
+
+  // localStorage.setItem("tequilacocktail", JSON.stringify(drinkToStore) )
+  // localStorage.getItem("tequilacocktail")
