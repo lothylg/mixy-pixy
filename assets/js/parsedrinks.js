@@ -65,64 +65,108 @@ async function getDataFromApi() {
     const resp = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=");
     const data = await resp.json();
 
-    // Ensure data.drinks is not null or undefined
     if (data.drinks) {
-      // Loop through all drinks that are returned
-      for (let i = 0; i < data.drinks.length; i++) {
-        const currentDrink = data.drinks[i];
+      data.drinks.forEach(currentDrink => {
         const newDrinkObj = {
           drink: currentDrink.strDrink,
           alcohol: currentDrink.strIngredient1,
           ingredients: parseDrinkData(currentDrink),
           instructions: currentDrink.strInstructions,
-          image: currentDrink.strDrinkThumb, // Use correct property for image
+          image: currentDrink.strDrinkThumb,
         };
-        alldrinks.push(newDrinkObj); // Add the new drink object to the array
-      }
+        alldrinks.push(newDrinkObj);
+      });
 
-      // Example usage of searchByAlcoholAndIngredients function
-      const filteredDrinks = searchByAlcoholAndIngredients("Gin", ["Grenadine"]);
-      localStorage.setItem("filteredDrinks", JSON.stringify(filteredDrinks));
-      console.log(filteredDrinks);
+      populateAlcoholDropdown();
     }
   } catch (error) {
     console.error("Error fetching data from API:", error);
   }
 }
 
-// Function to parse drink data and return ingredients with their measures
 function parseDrinkData(drinkObj) {
   let mixdata = [];
-  // Loop over each of the object keys in the drink data
   Object.keys(drinkObj).forEach(function (key) {
     let ingredientData = { name: "", measure: "" };
-    // If the key begins with "strIngredient" AND if it has a value other than null then we want to look at it
     if (key.includes("strIngredient") && drinkObj[key] !== null) {
       ingredientData.name = drinkObj[key];
-      // Get the number associated with the ingredient so we get the associated measure
       const ingredientNumber = key.split("strIngredient")[1];
       const measureKeyName = `strMeasure${ingredientNumber}`;
-      // Add the measure info for that ingredient, or "As much as you like!" if null
       ingredientData.measure = drinkObj[measureKeyName] || "As much as you like!";
-      // Now add the ingredient data object to our array of mix data
       mixdata.push(ingredientData);
     }
   });
   return mixdata;
 }
 
-// search by alcohol type + ingredients
-function searchByAlcoholAndIngredients(alcoholType, ingredientNames) {
-  const filteredDrinks = alldrinks.filter(drink => {
-    const hasAlcohol = drink.alcohol === alcoholType;
-    const hasIngredients = ingredientNames.every(name => 
-      drink.ingredients.some(ingredient => ingredient.name === name)
-    );
-    return hasAlcohol && hasIngredients;
+function populateAlcoholDropdown() {
+  const alcoholDropdown = document.getElementById("alcoholDropdown");
+  const alcoholSet = new Set(alldrinks.map(drink => drink.alcohol));
+  
+  alcoholSet.forEach(alcohol => {
+    const option = document.createElement("option");
+    option.value = alcohol;
+    option.textContent = alcohol;
+    alcoholDropdown.appendChild(option);
   });
 
-  return filteredDrinks;
+  alcoholDropdown.addEventListener("change", populateIngredientDropdown);
 }
+
+function populateIngredientDropdown() {
+  const alcoholDropdown = document.getElementById("alcoholDropdown");
+  const selectedAlcohol = alcoholDropdown.value;
+  const ingredientDropdown = document.getElementById("ingredientDropdown");
+  ingredientDropdown.innerHTML = "";
+
+  const drinksWithSelectedAlcohol = alldrinks.filter(drink => drink.alcohol === selectedAlcohol);
+  const ingredientSet = new Set(drinksWithSelectedAlcohol.flatMap(drink => drink.ingredients.map(ingredient => ingredient.name)));
+
+  ingredientSet.forEach(ingredient => {
+    const option = document.createElement("option");
+    option.value = ingredient;
+    option.textContent = ingredient;
+    ingredientDropdown.appendChild(option);
+  });
+}
+
+function searchByAlcoholAndIngredients(alcoholType, ingredientName) {
+  const filteredDrinks = alldrinks.filter(drink => {
+    const hasAlcohol = drink.alcohol === alcoholType;
+    const hasIngredient = drink.ingredients.some(ingredient => ingredient.name === ingredientName);
+    return hasAlcohol && hasIngredient;
+  });
+
+  localStorage.setItem("filteredDrinks", JSON.stringify(filteredDrinks));
+  displayFilteredDrinks(filteredDrinks);
+}
+
+function displayFilteredDrinks(filteredDrinks) {
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "";
+
+  filteredDrinks.forEach(drink => {
+    const drinkDiv = document.createElement("div");
+    drinkDiv.innerHTML = `
+      <h3>${drink.drink}</h3>
+      <p>Alcohol: ${drink.alcohol}</p>
+      <p>Ingredients: ${drink.ingredients.map(ingredient => `${ingredient.name} (${ingredient.measure})`).join(", ")}</p>
+      <p>Instructions: ${drink.instructions}</p>
+      <img src="${drink.image}" alt="${drink.drink}">
+    `;
+    resultsDiv.appendChild(drinkDiv);
+  });
+}
+
+document.getElementById("drinkForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const alcoholDropdown = document.getElementById("alcoholDropdown");
+  const ingredientDropdown = document.getElementById("ingredientDropdown");
+  const selectedAlcohol = alcoholDropdown.value;
+  const selectedIngredient = ingredientDropdown.value;
+
+  searchByAlcoholAndIngredients(selectedAlcohol, selectedIngredient);
+});
 
 // Call the function to fetch data from API
 getDataFromApi();
