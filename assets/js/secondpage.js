@@ -38,7 +38,7 @@ function cardPrimary(){
     }
     
 
-}
+} 
 
 // { name: "", measure: "" }
 function printIngredients(arrOfIngredients){
@@ -68,7 +68,8 @@ function readDrinkFromStorage() {
 
 function newDrinkResults(){
     $("#newDrinkBtn").click(function(){
-        $("#results").empty();
+        $("#results").empty()
+        
 
       })
 }
