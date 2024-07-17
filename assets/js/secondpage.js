@@ -9,6 +9,7 @@ let existingReviews = localStorage.getItem('drinkThoughts') || [];
 const drinkCard= $('#results')
 const resultsContainer= $('#resultsContainer')
 
+
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
 function cardPrimary(){
@@ -161,6 +162,8 @@ function addReview(event){
 
 
 
+
+
 // //arg needed below for api data
 // function createDrinkCards(){
 //     const cardDeck = $('<div>').addClass ('card-deck') //might need to set this to global, and then append inside of a separate later function
@@ -183,6 +186,9 @@ cardPrimary();
 
 //Calls / event listeners
 reviewSubmitBtn.addEventListener("click", addReview);
+$(document).ready(function() {
+    populateReviews();
+})
 
 
 
