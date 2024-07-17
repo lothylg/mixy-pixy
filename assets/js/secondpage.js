@@ -8,7 +8,7 @@ const reviewSubmitBtn = document.getElementById('reviewBtn');
 let existingReviews = localStorage.getItem('drinkThoughts') || [];
 const drinkCard= $('#results')
 const resultsContainer= $('#resultsContainer')
-
+const newDrinkBtn= $('#newDrinkBtn')
 
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
@@ -26,15 +26,33 @@ function cardPrimary(){
         // const cardBody = $('<div>').addClass ('card-body')
         const cardImg = $('<img>').addClass('card-img-top').attr("src", currCard.image)//apend 
         const cardDrinkName= $('<p>').addClass('cardTitle').text(currCard.drink)//drink name
-        const cardDrinkMix= $('<p>').addClass('card-text').text(currCard.ingredients)// append ingredients from this area
         const cardDrinkInstructions= $('<p>').addClass('card-text').text(currCard.instructions) //append drink info to ext area
 
+        // get ingredients from function below
+        const ingredients = printIngredients(currCard.ingredients)
 
-        cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkMix, cardDrinkInstructions)
+
+        cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkInstructions, ingredients)
         console.log(cardBodyHtml)
         resultsContainer.append(cardBodyHtml)
     }
     
+
+
+// { name: "", measure: "" }
+function printIngredients(arrOfIngredients){
+
+    const listContainer = $("<ul>");
+
+    for (ingredient of arrOfIngredients){
+        const liTag1 = $("<li>");
+        liTag1.text(`${ingredient.name}: ${ingredient.measure}`)
+        listContainer.append(liTag1)
+    }
+
+    return listContainer;
+
+}
 
 }
     function printIngredients(arrOfIngredients){
@@ -52,9 +70,26 @@ function cardPrimary(){
     }
 
 
-function readDrinkFromStorage() {
+function readDrinkFromStorage() { 
     let drinkData = JSON.parse(localStorage.getItem('filteredDrinks'));
     return drinkData;
+}
+
+// function clearFirstSearch(){
+//     $("#newDrinkBtn").click(function(){
+//         $("#results").empty();
+//       });
+// }
+
+function newDrinkResults(){
+    $("#newDrinkBtn").click(function(){
+        localStorage.clear()
+        if(cardPrimary ===''){
+            cardPrimary()
+          }
+        
+
+      })
 }
 
 //to do: once json has been parsed, append the information to the elements above 
@@ -85,7 +120,7 @@ function populateReviews(){
     const cabinet = document.getElementById('reviewContainer');
 
     cabinet.innerHTML = "";
-    for ( let i=0; i< reviews.length; i++){
+    for ( let i=0; i< reviews?.length; i++){
         const h4Tag = document.createElement('h4');
         h4Tag.textContent = `Drink name: ${reviews[i].drinkName}`;
         const dateTried = document.createElement('p');
@@ -104,7 +139,6 @@ function populateReviews(){
     }
 
     localStorage.setItem("existingReviews", JSON.stringify(reviews))
-
 }
 
 // function createReviewCard(review){
