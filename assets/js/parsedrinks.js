@@ -214,7 +214,3 @@ document.getElementById("drinkForm").addEventListener("submit", function(event) 
 
   searchByAlcoholAndIngredients(selectedAlcohol, selectedIngredient);
 });
-
-// Call the function to fetch data from API
-getDataFromApi();
-
