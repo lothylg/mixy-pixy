@@ -40,9 +40,8 @@ function cardPrimary(){
 
 function printIngredients(){
     let ingredientsList= readDrinkFromStorage()
-    for ( let i=0; i< ingredients.length; i++){
-        console.log(ingredientsList)
-    }   return ingredientsList
+    for ( let i=2; i< ingredients.length; i++){
+    }  console.log(ingredientsList)
 
 }
 
@@ -51,15 +50,16 @@ function readDrinkFromStorage() { // come back later
     return drinkData;
 }
 
-function clearFirstSearch(){
-    $("#newDrinkBtn").click(function(){
-        $("#results").empty();
-      });
-}
+// function clearFirstSearch(){
+//     $("#newDrinkBtn").click(function(){
+//         $("#results").empty();
+//       });
+// }
 
 function newDrinkResults(){
     $("#newDrinkBtn").click(function(){
         $("#results").empty();
+
       })
 }
 
