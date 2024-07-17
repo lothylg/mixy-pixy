@@ -1,5 +1,12 @@
+//global variables
+const surpriseMe = document.getElementById('surpriseBtn');
+const randomResDiv = document.getElementById('resultsRandomContainer');
+const randomDrinkDiv = document.querySelector("#random-drink");
+const closeSpan = document.getElementById('closeX');
 const alldrinks = [];
 
+
+//functions
 async function getDataFromApi() {
   try {
     const resp = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=");
@@ -38,31 +45,38 @@ function parseDrinkData(drinkObj) {
   });
   return mixdata;
 }
-
+// fetch('www.thecocktaildb.com/api/json/v1/1/random.php')
+//   .then(res => console.log(res.json()))
+//   .then(data => console.log(data))
+//   .catch(error => console.log('error'))
 async function getRandomDrinkApi(){
-  try {
-      const randInfo = await fetch("www.thecocktaildb.com/api/json/v1/1/random.php");
-      const randDrinkData = await randInfo.json();
-  
-  if (randDrinkData.drinks) {
-      const drinkObj = {
-          drink: strDrink,
-          alcohol: strAlcoholic,
-          glass: strGlass,
-          instructions: strInstructions,
-          ingredients: parseDrinkData(randDrinkData),
-          image: strDrinkThumb
 
-      }
-  } 
+  try {
+      const randInfo = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
+      const randDrinkData = await randInfo.json();
+
+      console.log(randDrinkData)
+
+      let drinkObj
+
+      if (randDrinkData){
+          drinkObj = {
+            drink: randDrinkData.drinks[0].strDrink,
+            alcohol: randDrinkData.drinks[0].strAlcoholic,
+            glass: randDrinkData.drinks[0].strGlass,
+            instructions: randDrinkData.drinks[0].strInstructions,
+            ingredients: parseDrinkData(randDrinkData.drinks[0]),
+            image: randDrinkData.drinks[0].strDrinkThumb
+          }
+        }      
+        displayRandomDrink(drinkObj);
+
   } catch (error) {
     console.error("Error fetching data from API:", error);
   }
 
-  console.log(randomDrinkObj)
 }
 
-getRandomDrinkApi();
 
 function populateAlcoholDropdown() {
   const alcoholDropdown = document.getElementById("alcoholDropdown");
@@ -123,6 +137,43 @@ function displayFilteredDrinks(filteredDrinks) {
   });
 }
 
+function displayRandomDrink(drinkObj) {
+
+  console.log(randomDrinkDiv)
+  // const resultsDiv = document.getElementById("randomResults");
+
+  const h2Tag = document.createElement('h2');
+  h2Tag.textContent = `Drink name: ${drinkObj.drink}`;
+
+  const alcoholic = document.createElement('p');
+  alcoholic.textContent = `Drink type: ${drinkObj.alcohol}`;
+
+  const glassType = document.createElement('p');
+  glassType.textContent = `Glass type: ${drinkObj.glass}`;
+
+  const ingredients = printIngredients(drinkObj.ingredients);
+  const ingredientsEl = document.createElement('p');
+  ingredientsEl.textContent = `Ingredients required: ${ingredients}`;
+
+  const instructions = document.createElement('p');
+  instructions.textContent = `Instructions: ${drinkObj.instructions}`;
+
+  const image = document.createElement('img');
+  image.setAttribute("src", drinkObj.image);
+  image.setAttribute("width", "200px");
+  image.setAttribute("height", "400px");
+  
+  randomDrinkDiv.appendChild(h2Tag);
+  randomDrinkDiv.appendChild(alcoholic);
+  randomDrinkDiv.appendChild(glassType);
+  randomDrinkDiv.appendChild(ingredients.get(0));
+  randomDrinkDiv.appendChild(instructions);
+  randomDrinkDiv.appendChild(image);
+
+  randomDrinkDiv.style.display = 'block';
+  randomResDiv.style.display = 'block';
+}
+
 document.getElementById("drinkForm").addEventListener("click", function(event) {
   event.preventDefault();
   const alcoholDropdown = document.getElementById("alcoholDropdown");
@@ -136,4 +187,18 @@ document.getElementById("drinkForm").addEventListener("click", function(event) {
 
 // Call the function to fetch data from API
 getDataFromApi();
+// getRandomDrinkApi();
 
+//calls / event listeners
+surpriseMe.addEventListener("click", function(event){
+  console.log("click")
+  getRandomDrinkApi();
+})
+
+closeSpan.addEventListener('click', function(event)
+  let currentMode = document.getElementById('resultsRandomContainer');
+  if(currentMode.class === hidden){
+    currentMode.class = visible;
+  }
+
+)
