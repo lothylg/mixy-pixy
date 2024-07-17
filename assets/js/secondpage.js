@@ -26,11 +26,13 @@ function cardPrimary(){
         // const cardBody = $('<div>').addClass ('card-body')
         const cardImg = $('<img>').addClass('card-img-top').attr("src", currCard.image)//apend 
         const cardDrinkName= $('<p>').addClass('cardTitle').text(currCard.drink)//drink name
-        const cardDrinkMix= $('<p>').addClass('card-text').text(currCard.ingredients)// append ingredients from this area
         const cardDrinkInstructions= $('<p>').addClass('card-text').text(currCard.instructions) //append drink info to ext area
 
+        // get ingredients from function below
+        const ingredients = printIngredients(currCard.ingredients)
 
-        cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkMix, cardDrinkInstructions)
+
+        cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkInstructions, ingredients)
         console.log(cardBodyHtml)
         resultsContainer.append(cardBodyHtml)
     }
@@ -38,14 +40,22 @@ function cardPrimary(){
 
 }
 
-function printIngredients(){
-    let ingredientsList= readDrinkFromStorage()
-    for ( let i=2; i< ingredients.length; i++){
-    }  console.log(ingredientsList)
+// { name: "", measure: "" }
+function printIngredients(arrOfIngredients){
+
+    const listContainer = $("<ul>");
+
+    for (ingredient of arrOfIngredients){
+        const liTag1 = $("<li>");
+        liTag1.text(`${ingredient.name}: ${ingredient.measure}`)
+        listContainer.append(liTag1)
+    }
+
+    return listContainer;
 
 }
 
-function readDrinkFromStorage() { // come back later
+function readDrinkFromStorage() { 
     let drinkData = JSON.parse(localStorage.getItem('filteredDrinks'));
     return drinkData;
 }
@@ -91,7 +101,7 @@ function populateReviews(){
     const cabinet = document.getElementById('reviewContainer');
 
     cabinet.innerHTML = "";
-    for ( let i=0; i< reviews.length; i++){
+    for ( let i=0; i< reviews?.length; i++){
         const h4Tag = document.createElement('h4');
         h4Tag.textContent = `Drink name: ${reviews[i].drinkName}`;
         const dateTried = document.createElement('p');
