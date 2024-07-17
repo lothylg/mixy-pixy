@@ -1,4 +1,14 @@
+//Global variables
 
+const dNameInput = $('#drinkName');
+const triedInput = $('#dateTried');
+const thoughtsInput = $('#reviewDetails');
+const reviewContainer = document.getElementById('reviewContainer');
+const reviewSubmitBtn = document.getElementById('reviewBtn');
+let existingReviews = localStorage.getItem('drinkThoughts') || [];
+
+
+//Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
 function cardPrimary(newDrinkObj){
     //Initial card/ cards will pop up for the drinks that match your ingredients. 
@@ -31,51 +41,72 @@ function cardPrimary(newDrinkObj){
     
 
 }
-
-
 //to do: once json has been parsed, append the information to the elements above 
 //card title will be the drink name from the API (strDrink)
 // card IMG will be picture from the API (strDrinkThumb)
 // cardDesc will be the how to (strInstructions)
-
 // const cardDeck = $('<div>').addClass ('card-deck')
-const dNameInput = $('#drinkName');
-const triedInput = $('#dateTried');
-const thoughtsInput = $('#reviewDetails');
-const reviewContainer = $('#reviewContainer');
-const reviewSubmitBtn = $('#reviewBtn')
-let existingReviews = localStorage.getItem('drinkThoughts') || [];
-console.log(existingReviews);
+
+/*Lothy todo: push reviews to local storage
+create individual cards for the reviews
+stylize the cards
+
+*/
 
 function readReviewsFromStorage(){
     if(existingReviews) {
        const reviews = JSON.parse(localStorage.getItem('drinkThoughts'));
-       console.log(reviews);
        return reviews;
     }
     return [];
 }
 
 function populateReviews(){
-    const reviews = readReviewsFromStorage();
+    const existingReviews = localStorage.getItem('existingReviews');
 
-    for (let review of reviews){
-        reviewContainer.append(createReviewCard(review));
+    const reviews = JSON.parse(existingReviews);
+
+    const cabinet = document.getElementById('reviewContainer');
+
+    cabinet.innerHTML = "";
+    for ( let i=0; i< reviews.length; i++){
+        const h4Tag = document.createElement('h4');
+        h4Tag.textContent = `Drink name: ${reviews[i].drinkName}`;
+        const dateTried = document.createElement('p');
+        dateTried.textContent = `Date tried: ${reviews[i].dateTried}`;
+        const reviewContent = document.createElement('p');
+        reviewContent.textContent = `Your thoughts: ${reviews[i].review}`;
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = "Delete Review";
+        deleteBtn.setAttribute = ("id", reviews[i].reviewId);
+
+        reviewContainer.appendChild(h4Tag);
+        reviewContainer.appendChild(dateTried);
+        reviewContainer.appendChild(reviewContent);
+        reviewContainer.appendChild(deleteBtn);
+
     }
+
+    localStorage.setItem("existingReviews", JSON.stringify(reviews))
+
 }
 
-function createReviewCard(review){
-    const reviewCard = $('<div>')
-        .addClass('card review-card my-3');
-    const reviewHeader = $('<div>').addClass('card-header h4').text(review.drinkName); 
-    const cardDescription = $('<p>').addClass('card-text').text(review.review);
-    const cardDueDate = $('<p>').addClass('card-text').text(review.dateTried);
-    const cardDeleteBtn = $('<button>')
-        .addClass('btn bg-info btn-delete-project delete')
-        .text('Delete')
-        .attr('data-review-id', review.reviewId)
-    cardDeleteBtn.on('click', handleDeleteReview);
-}
+// function createReviewCard(review){
+//     const reviewCard = $('<div>')
+//         .addClass('card review-card my-3');
+//     const reviewHeader = $('<div>').addClass('card-header h4').text(review.drinkName); 
+//     const reviewContent = $('<p>').addClass('card-text').text(review.review);
+//     const dateTried = $('<p>').addClass('card-text').text(review.dateTried);
+//     const deleteBtn = $('<button>')
+//         .addClass('btn bg-info btn-delete-project delete')
+//         .text('Delete')
+//         .attr('data-review-id', review.reviewId)
+//     cardDeleteBtn.on('click', handleDeleteReview);
+
+//     reviewCard.append(reviewHeader, reviewContent, dateTried, deleteBtn);
+// }
+
+
 function saveReviewsToStorage(){
     localStorage.setItem('existingReviews', JSON.stringify(existingReviews));
 }
@@ -90,7 +121,14 @@ function handleDeleteReview(){
 }
 
 function addReview(event){
-    event.preventDefault();
+    event.preventDefault(); 
+    console.log("add")
+
+    const existingReviews = localStorage.getItem('existingReviews');
+
+    const reviews = existingReviews ? JSON.parse(existingReviews) : [];
+
+    const cabinet = document.getElementById('reviewContainer');
 
     // ? Read user input from the form
     const name = dNameInput.val().trim();
@@ -105,11 +143,8 @@ function addReview(event){
         review: content
     }
 
-    const reviews = readReviewsFromStorage();
-;
-    existingReviews.push(newReview);
-
-    saveReviewsToStorage()
+    reviews.push(newReview);
+    localStorage.setItem('existingReviews', JSON.stringify(reviews))
 
     populateReviews();
 
@@ -139,7 +174,9 @@ function addReview(event){
 //     return drinkCard
 // }
 
-reviewSubmitBtn.on('click', addReview);
+//Calls / event listeners
+reviewSubmitBtn.addEventListener("click", addReview);
+
 
 
 
