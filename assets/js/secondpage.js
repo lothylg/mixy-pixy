@@ -8,7 +8,7 @@ const reviewSubmitBtn = document.getElementById('reviewBtn');
 let existingReviews = localStorage.getItem('drinkThoughts') || [];
 const drinkCard= $('#results')
 const resultsContainer= $('#resultsContainer')
-
+const newDrinkBtn= $('#newDrinkBtn')
 
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
@@ -39,12 +39,28 @@ function cardPrimary(){
 }
 
 function printIngredients(){
-    
+    let ingredientsList= readDrinkFromStorage()
+    for ( let i=0; i< ingredients.length; i++){
+        console.log(ingredientsList)
+    }   return ingredientsList
+
 }
 
-function readDrinkFromStorage() {
+function readDrinkFromStorage() { // come back later
     let drinkData = JSON.parse(localStorage.getItem('filteredDrinks'));
     return drinkData;
+}
+
+function clearFirstSearch(){
+    $("#newDrinkBtn").click(function(){
+        $("#results").empty();
+      });
+}
+
+function newDrinkResults(){
+    $("#newDrinkBtn").click(function(){
+        $("#results").empty();
+      })
 }
 
 //to do: once json has been parsed, append the information to the elements above 
@@ -94,7 +110,6 @@ function populateReviews(){
     }
 
     localStorage.setItem("existingReviews", JSON.stringify(reviews))
-
 }
 
 // function createReviewCard(review){

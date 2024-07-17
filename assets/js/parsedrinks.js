@@ -39,30 +39,30 @@ function parseDrinkData(drinkObj) {
   return mixdata;
 }
 
-async function getRandomDrinkApi(){
-  try {
-      const randInfo = await fetch("www.thecocktaildb.com/api/json/v1/1/random.php");
-      const randDrinkData = await randInfo.json();
+// async function getRandomDrinkApi(){
+//   try {
+//       const randInfo = await fetch("www.thecocktaildb.com/api/json/v1/1/random.php");
+//       const randDrinkData = await randInfo.json();
   
-  if (randDrinkData.drinks) {
-      const drinkObj = {
-          drink: strDrink,
-          alcohol: strAlcoholic,
-          glass: strGlass,
-          instructions: strInstructions,
-          ingredients: parseDrinkData(randDrinkData),
-          image: strDrinkThumb
+//   if (randDrinkData.drinks) {
+//       const drinkObj = {
+//           drink: strDrink,
+//           alcohol: strAlcoholic,
+//           glass: strGlass,
+//           instructions: strInstructions,
+//           ingredients: parseDrinkData(randDrinkData),
+//           image: strDrinkThumb
 
-      }
-  } 
-  } catch (error) {
-    console.error("Error fetching data from API:", error);
-  }
+//       }
+//   } 
+//   } catch (error) {
+//     console.error("Error fetching data from API:", error);
+//   }
 
-  console.log(randomDrinkObj)
-}
+//   console.log(randomDrinkObj)
+// }
 
-getRandomDrinkApi();
+// getRandomDrinkApi();
 
 function populateAlcoholDropdown() {
   const alcoholDropdown = document.getElementById("alcoholDropdown");
