@@ -107,8 +107,8 @@ function searchByAlcoholAndIngredients(alcoholType, ingredientName) {
 }
 
 function displayFilteredDrinks(filteredDrinks) {
-  const resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = "";
+  const resultsDiv = document.getElementById("resultsContainer");
+    resultsDiv.innerHTML = "";
 
   filteredDrinks.forEach(drink => {
     const drinkDiv = document.createElement("div");
@@ -123,7 +123,7 @@ function displayFilteredDrinks(filteredDrinks) {
   });
 }
 
-document.getElementById("drinkForm").addEventListener("click", function(event) {
+document.getElementById("drinkForm").addEventListener("submit", function(event) {
   event.preventDefault();
   const alcoholDropdown = document.getElementById("alcoholDropdown");
   const ingredientDropdown = document.getElementById("ingredientDropdown");

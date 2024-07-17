@@ -68,7 +68,10 @@ function readDrinkFromStorage() {
 
 function newDrinkResults(){
     $("#newDrinkBtn").click(function(){
-        $("#results").empty()
+        localStorage.clear()
+        if(cardPrimary ===''){
+            cardPrimary()
+          }
         
 
       })
