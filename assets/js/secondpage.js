@@ -8,14 +8,15 @@ const reviewSubmitBtn = document.getElementById('reviewBtn');
 let existingReviews = localStorage.getItem('drinkThoughts') || [];
 
 
+
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
 function cardPrimary(drinkObj){
     const cards = $('<div>').addClass ('card')
     const cardBody = $('<div>').addClass ('card-body')
     const cardImg = $('<img src = >').addClass('card-img-top')
-    const cardDrinkName= $('<p>').addClass('cardTitle').text(drinkObj.[i])
-    const cardDrinkMix= $('<p>').addClass('card-text').text(drinkObj.[i])
+    const cardDrinkName= $('<p>').addClass('cardTitle').text(drinkObj)
+    const cardDrinkMix= $('<p>').addClass('card-text').text(drinkObj)
 
     cardBody.append(cardDrinkName, modalMoreInfoBtn)
     cards.append(cardImg, cardBody)
@@ -142,6 +143,8 @@ function addReview(event){
 
 
 
+
+
 // //arg needed below for api data
 // function createDrinkCards(){
 //     const cardDeck = $('<div>').addClass ('card-deck') //might need to set this to global, and then append inside of a separate later function
@@ -162,6 +165,9 @@ function addReview(event){
 
 //Calls / event listeners
 reviewSubmitBtn.addEventListener("click", addReview);
+$(document).ready(function() {
+    populateReviews();
+})
 
 
 
