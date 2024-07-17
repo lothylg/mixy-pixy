@@ -1,9 +1,22 @@
 const button= document.getElementById('submitBtn');
+const formInputEl= document.getElementById('drinkForm')
 
-button.addEventListener('submit', function() {
-    // call the function to fetch 
-    window.location.href =``
-  });
+
+button.addEventListener('submit', handleFetchOnSubmit()) 
+button.addEventListener('submit', moveToResults()) 
+
+
+function handleFetchOnSubmit(event){
+  event.preventDefault()
+  if(formInputEl.value===''){
+    alert ('Please enter your ingredients!')
+  } else {getDataFromApi()}
+}
+
+function moveToResults(event){
+  event.preventDefault();
+  window.href.location=`secondpage.html`
+}
 
 
 
