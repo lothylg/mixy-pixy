@@ -38,7 +38,6 @@ function cardPrimary(){
     }
     
 
-} 
 
 // { name: "", measure: "" }
 function printIngredients(arrOfIngredients){
@@ -54,6 +53,22 @@ function printIngredients(arrOfIngredients){
     return listContainer;
 
 }
+
+}
+    function printIngredients(arrOfIngredients){
+
+        const listContainer = $("<ul>");
+    
+        for (ingredient of arrOfIngredients){
+            const liTag1 = $("<li>");
+            liTag1.text(`${ingredient.name}: ${ingredient.measure}`)
+            listContainer.append(liTag1)
+        }
+    
+        return listContainer;
+    
+    }
+
 
 function readDrinkFromStorage() { 
     let drinkData = JSON.parse(localStorage.getItem('filteredDrinks'));
@@ -112,14 +127,14 @@ function populateReviews(){
         dateTried.textContent = `Date tried: ${reviews[i].dateTried}`;
         const reviewContent = document.createElement('p');
         reviewContent.textContent = `Your thoughts: ${reviews[i].review}`;
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = "Delete Review";
-        deleteBtn.setAttribute = ("id", reviews[i].reviewId);
+        // const deleteBtn = document.createElement('button');
+        // deleteBtn.textContent = "Delete Review";
+        // deleteBtn.setAttribute = ("id", reviews[i].reviewId);
 
         reviewContainer.appendChild(h4Tag);
         reviewContainer.appendChild(dateTried);
         reviewContainer.appendChild(reviewContent);
-        reviewContainer.appendChild(deleteBtn);
+        // reviewContainer.appendChild(deleteBtn);
 
     }
 
@@ -215,6 +230,8 @@ cardPrimary();
 
 //Calls / event listeners
 reviewSubmitBtn.addEventListener("click", addReview);
+
+
 $(document).ready(function() {
     populateReviews();
 })

@@ -27,10 +27,17 @@
         <div class="row">
         <div class="containter-fluid col-lg-4">
             <div class="text-center mb-5 pt-3">
-                <button class="btn btn-success col-lg-4" data-bs-toggle="modal" data-bs-target="#formModal">Find a new drink</button>
+                <button id="supriseMe"class="btn btn-success col-lg-4" data-bs-toggle="modal" data-bs-target="#formModal">Find a new drink</button>
             </div>
             <div class="text-center mb-5 pt-3">
-                <button type="button" class="btn btn-primary col-lg-4">Surprise me!</button>
+                <button type="button" class="btn btn-primary col-lg-4" id="surpriseBtn">Surprise me!</button>
+                <div class="hidden" id="resultsRandomContainer">
+                    <div class="title-area hidden">
+                        <h3 class="hidden ">Order up!</h3>
+                        <span id="closeX" class="hidden">X</span>
+                    </div>
+                    <div id="random-drink"></div>
+                </div>
             </div>
             <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -62,15 +69,16 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal fade" id="randomDrinkModal" tabindex="-1" aria-labelledby="randomDrinkModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="formModalLabel">Here's your random drink!</h5>
+                              <h5 class="modal-title" id="randomDrinkModal">Order up!</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                        
-
+                          <div id="randomResDiv">
+                            <!-- Filtered drinks will be displayed here -->
+                          </div>  
                     </div>
                 </div>
             </div>
@@ -81,18 +89,18 @@
                   </div>
 
 
-                    <h2 class="text-center col-md-12 p-2">this is a drink result</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sequi provident eveniet distinctio optio vel minima? Id obcaecati soluta sequi accusamus quos molestias, ducimus quo, sint hic deleniti culpa blanditiis!</p>
+                    <!-- <h2 class="text-center col-md-12 p-2">this is a drink result</h2> -->
+                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sequi provident eveniet distinctio optio vel minima? Id obcaecati soluta sequi accusamus quos molestias, ducimus quo, sint hic deleniti culpa blanditiis!</p> -->
                 </div>
             </div>
         </div>
     </div>
     <div class="containter-fluid col-lg-4 border" id="drinkCabinetContainer">
         <div>
-            <h4 class="text-center cabinetLabel">Your drink cabinet</h4>
+            <h4 class="text-center cabinetLabel">Your Drink Cabinet</h4>
             <div class="text-center p-2">
                 <button type="button" class="btn btn-primary"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal"> Review a drink!
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"> Review a Drink!
                 </button>
             <div class="col-lg-12" id="reviewContainer">
             </div>
