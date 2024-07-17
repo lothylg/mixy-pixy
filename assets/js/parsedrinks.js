@@ -217,4 +217,4 @@ document.getElementById("drinkForm").addEventListener("submit", function(event) 
 
 // Call the function to fetch data from API
 getDataFromApi();
-
+}
