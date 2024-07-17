@@ -6,25 +6,44 @@ const thoughtsInput = $('#reviewDetails');
 const reviewContainer = document.getElementById('reviewContainer');
 const reviewSubmitBtn = document.getElementById('reviewBtn');
 let existingReviews = localStorage.getItem('drinkThoughts') || [];
-
+const drinkCard= $('#results')
+const resultsContainer= $('#resultsContainer')
 
 
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
-function cardPrimary(drinkObj){
-    const cards = $('<div>').addClass ('card')
-    const cardBody = $('<div>').addClass ('card-body')
-    const cardImg = $('<img src = >').addClass('card-img-top')
-    const cardDrinkName= $('<p>').addClass('cardTitle').text(drinkObj)
-    const cardDrinkMix= $('<p>').addClass('card-text').text(drinkObj)
+function cardPrimary(){
+    const drinkCard = readDrinkFromStorage();
+    console.log(drinkCard)
+    for ( let i=0; i< drinkCard.length; i++){
+        const currCard = drinkCard[i]
+        const cardBodyHtml = $("<div class='card-body'>")
+        // cardBodyHtml.html(`
+        //     <p>Hello</p>
+        // `)   
 
-    cardBody.append(cardDrinkName, modalMoreInfoBtn)
-    cards.append(cardImg, cardBody)
-    return cards;
+
+        // const cardBody = $('<div>').addClass ('card-body')
+        const cardImg = $('<img>').addClass('card-img-top').attr("src", currCard.image)//apend 
+        const cardDrinkName= $('<p>').addClass('cardTitle').text(currCard.drink)//drink name
+        const cardDrinkMix= $('<p>').addClass('card-text').text(currCard.ingredients)// append ingredients from this area
+        const cardDrinkInstructions= $('<p>').addClass('card-text').text(currCard.instructions) //append drink info to ext area
+
+
+        cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkMix, cardDrinkInstructions)
+        console.log(cardBodyHtml)
+        resultsContainer.append(cardBodyHtml)
+    }
+    
+
 }
 
-function readProjectsFromStorage() {
-    let drinkData = JSON.parse(localStorage.getItem('drinkObj'));
+function printIngredients(){
+    
+}
+
+function readDrinkFromStorage() {
+    let drinkData = JSON.parse(localStorage.getItem('filteredDrinks'));
     return drinkData;
 }
 
@@ -162,6 +181,8 @@ function addReview(event){
 
 //     return drinkCard
 // }
+
+cardPrimary();
 
 //Calls / event listeners
 reviewSubmitBtn.addEventListener("click", addReview);
