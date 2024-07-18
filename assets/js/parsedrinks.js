@@ -45,10 +45,7 @@ function parseDrinkData(drinkObj) {
   });
   return mixdata;
 }
-// fetch('www.thecocktaildb.com/api/json/v1/1/random.php')
-//   .then(res => console.log(res.json()))
-//   .then(data => console.log(data))
-//   .catch(error => console.log('error'))
+
 async function getRandomDrinkApi(){
 
   try {
@@ -76,7 +73,6 @@ async function getRandomDrinkApi(){
   }
 
 }
-
 
 function populateAlcoholDropdown() {
   const alcoholDropdown = document.getElementById("alcoholDropdown");
@@ -121,8 +117,8 @@ function searchByAlcoholAndIngredients(alcoholType, ingredientName) {
 }
 
 function displayFilteredDrinks(filteredDrinks) {
-  const resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = "";
+  const resultsDiv = document.getElementById("resultsContainer");
+    resultsDiv.innerHTML = "";
 
   filteredDrinks.forEach(drink => {
     const drinkDiv = document.createElement("div");
@@ -136,6 +132,9 @@ function displayFilteredDrinks(filteredDrinks) {
     resultsDiv.appendChild(drinkDiv);
   });
 }
+
+
+
 
 function displayRandomDrink(drinkObj) {
 
@@ -175,6 +174,7 @@ function displayRandomDrink(drinkObj) {
 }
 
 document.getElementById("drinkForm").addEventListener("click", function(event) {
+
   event.preventDefault();
   const alcoholDropdown = document.getElementById("alcoholDropdown");
   const ingredientDropdown = document.getElementById("ingredientDropdown");
@@ -190,10 +190,12 @@ getDataFromApi();
 // getRandomDrinkApi();
 
 //calls / event listeners
+
 surpriseMe.addEventListener("click", function(event){
   console.log("click")
   randomDrinkDiv.innerHTML = "";
   getRandomDrinkApi();
 })
+
 
 
