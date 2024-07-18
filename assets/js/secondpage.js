@@ -9,6 +9,7 @@ let existingReviews = localStorage.getItem('drinkThoughts') || [];
 const drinkCard= $('#results')
 const resultsContainer= $('#resultsContainer')
 const newDrinkBtn= $('#newDrinkBtn').on('submit', newDrinkResults)
+
 const ughBtn = document.getElementById('ughBtn');
 const oneAlcInput = document.getElementById('alcoholDropdown');
 const ingDdInput = document.getElementById('ingredientDropdown');
@@ -48,6 +49,8 @@ ughBtn.addEventListener("click", cardPrimary)
 
 // })
 
+
+
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
 function cardPrimary(){
@@ -70,7 +73,6 @@ function cardPrimary(){
         // get ingredients from function below
         const ingredients = printIngredients(currCard.ingredients)
 
-        cardBodyHtml.innerHTML="";
         cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkInstructions, ingredients)
         console.log(cardBodyHtml)
         resultsContainer.append(cardBodyHtml)
