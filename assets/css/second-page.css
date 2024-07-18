@@ -1,21 +1,15 @@
-
-body div#drinkCabinetContainer {
-    display: flex;
-    border: 2px solid black;
-    padding: 10px;
-}
-
-/*body {
-    background-image: url("https://images.unsplash.com/photo-1619151467015-b0eb2ed59b80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-   }
-*/
 /* div#resultsRandomContainer .hidden{
     visibility: hidden;
-} */
-
-/* div#resultsRandomContainer{
+}
+div#resultsRandomContainer div.title-area .hidden{
+    visibility: hidden;
+}
+div#resultsRandomContainer h3 .hidden{
+    visibility: hidden;
+}
+div#resultsRandomContainer .visible{
     display: none;
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -23,20 +17,18 @@ body div#drinkCabinetContainer {
     margin: auto;
     width: 85%;
     height: 90%;
-    border: 1px solid #413b3b;
+    border: 1px solid #413B3B;
     border-radius: 12px;
     box-shadow: 2px 2px #444;
     background-color: white;
     padding: 10px;
     z-index: 20;
 }
-
 div#resultsRandomContainer {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-
 div#resultsRandomContainer .title-area {
     display: flex;
     justify-content: space-between;
@@ -44,19 +36,16 @@ div#resultsRandomContainer .title-area {
     padding: 8px 12px;
     border-bottom: 1px solid #444;
 }
-
 div#resultsRandomContainer .title-area h3 {
     font-size: 40px;
     text-shadow: 1px 1px #555;
     width: 95%;
-}
-
-div#resultsRandomContainer .title-area span {
+} */
+/* div#resultsRandomContainer .title-area span {
     font-size: 30px;
     cursor: pointer;
-}
-
-div#random-drink {
+} */
+/* div#random-drink {
     width: 100%;
     height: 100%;
     padding-left: 30%;
@@ -64,7 +53,6 @@ div#random-drink {
     flex-direction: flex-start;
     font-size: large;
 }
-
 div#random-drink img {
     position: absolute;
     top: 67px;
@@ -73,10 +61,102 @@ div#random-drink img {
     height: calc(100% - 67px);
     border-bottom-left-radius: 12px;
 } */
-
 @media screen and (min-width: 900px) {
     div#resultsRandomContainer {
         width: 50%;
         height: 65%;
     }
+body{
+    font-family: "Playwrite CU", cursive;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(0, 0, 0)
 }
+#drinkForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-img-top{
+    width: 500px;
+    height: 500px;
+    border-style: ridge;
+    border: 5px solid rgb(0, 0, 0);
+    padding: 25px;
+    margin: 20px;
+    border-color: burlywood;
+}
+h4{
+    font-size: 15px;
+}
+h2{
+    font-size: 40px;
+    font-display: bold;
+}
+/* --------2ND PAGE BUTTONS FAND/SM------------------------- */
+#surpriseMe{
+    color: black;
+    background-color:#e2afe9;
+    border: 2px solid black;
+}
+#surpriseBtn{
+    color:black;
+    background-color:  rgb(199, 205, 24);
+    border: 2px solid black;
+}
+/* ----------------------------------------------------- */
+}
+/* ----CREATE DRINK FORM------------- */
+#newDrinkBtn{
+  border: 2px outset rgb(0, 0, 0);
+  padding: 25px;
+  margin: 20px;
+  text-shadow: 3px 3px 4px rgb(199, 205, 24);
+  background: #E2AFE9;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-family: "Playwrite CU", cursive;
+  padding: 5%;
+  text-align: center;
+}
+#alcoholDropdown{
+    padding: 5px 100px
+}
+#ingredientDropdown{
+    padding: 5px 100px
+}
+#formModalLabel{
+    text-shadow: 3px 3px 4px rgb(199, 205, 24);
+    color:  rgb(0, 0, 0);
+}
+/* ----------------- */
+/* ------REVIEW A DRINK--------- */
+#drinkCabinetContainer{
+    color: black;
+    background-color:#ffffff;
+    border: 12px solid black;
+    height: 600px;
+    width: 400px;
+    padding: 25px;
+}
+#drinkReview{
+    background-color:#e2afe9;
+    color: #000;
+    border: 2px solid rgb(0, 0, 0);
+}
+/* -----REVIEW FORM-------- */
+#reviewBtn{
+    color: black;
+    background-color:#e2afe9;
+    border: 2px solid rgb(0, 0, 0);
+}
+/* ------TYPOGRAPHY FOR REVIEW FORUM--------- */
+#drinkName{
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 4px rgb(199, 205, 24);
+}
+#dateTried{
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 4px #E2AFE9;
+}
+/* ----------------- */
