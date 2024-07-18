@@ -1,29 +1,100 @@
-
-/* body {
-  background-image: url("https://images.unsplash.com/photo-1619151467015-b0eb2ed59b80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
- 
- } */
-  body {
-    background-color: rgb(188, 248, 216)
-  }
 .swiffy-slider {
-    height: 300px;
+  height: 300px;
+  border: 12px double rgb(199, 205, 24);
+  padding: 10px; 
+  display: flex;
 }
+
+
 /* body {
   filter:blur(3px);
 } */
 
 .header {
-  border: 5px solid rgb(0, 0, 0);
+  border: 5px inset rgb(0, 0, 0);
   padding: 25px;
   margin: 20px;
-  filter: blur( 1px);
-  text-shadow: 3px 3px 4px rgb(110, 107, 107);
-  background: #ada9a9;
+  /* filter: blur( 1px); */
+  text-shadow: 3px 3px 4px rgb(199, 205, 24);
+  background: #e2afe9;
   color: rgb(0, 0, 0);
   font-size: 40px;
   font-family: "Playwrite CU", cursive;
-  font-style: normal;
+
+}
+
+#drinkForm{
+  border: 5px outset rgb(0, 0, 0);
+  padding: 25px;
+  margin: 20px;
+  /* filter: blur( 1px); */
+  text-shadow: 3px 3px 4px rgb(199, 205, 24);
+  background: #e2afe9;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  font-family: "Playwrite CU", cursive;
+  padding: 5%;
+  text-align: center;
+
+
+
+  /* font-family: "Playwrite CU", cursive;
+  border: 5px rgb(0, 0, 0);
+  padding: 25px;
+  margin: 20px;
+  background-color:rgb(242, 244, 169);
+  text-align: center;
+  border: #000000;
+  border-style: outset;
+  padding: 5%; */
+  /* width: 100%; */
+
+}
+#alcoholDropdown {
+  font-family: "Playwrite CU", cursive;
+  background-color: #ffffff; 
+  border: none;
+  color: white;
+  padding: 5px 100px;
+  text-align: center;
+  font-size: 16px;
+  color: #000000;
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+#ingredientDropdown {
+  font-family: "Playwrite CU", cursive;
+  background-color: #ffffff; 
+  border: none;
+  color: white;
+  padding: 5px 100px;
+  text-align: center;
+  font-size: 16px;
+  color: #000000;
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+#submitBtn {
+  font-family: "Playwrite CU", cursive;
+  background-color: #ffffff; 
+  border: none;
+  color: white;
+  padding: 5px 24px;
+  text-align: center;
+  font-size: 16px;
+  color: #000000;
+
+  color: black;
+  border: 2px solid #555555;
+  
+}
+
+
+body{
+  background-color: rgb(255, 127, 127);
 }
 
 /* #result {
@@ -41,7 +112,7 @@
   #result ul li:hover {
     background: #eee;
   } */
-
+/* 
   .dropbtn {
     filter:blur(.5px);
     width: 200px;
@@ -110,4 +181,4 @@
     height: 50px;
     width: 100%;
 
-}
+} */
