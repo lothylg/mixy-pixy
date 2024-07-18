@@ -1,22 +1,16 @@
 
-/* #drinkCabinetContainer {
-    display: flex;
-    border: 2px solid black;
-    padding: 10px;
-} */
+
 /* body{
     opacity: .9;
     background-image: url(https://images.unsplash.com/photo-1614034509976-5f9dfab6e363?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) ;
 } */
 
-
-
-
-
 /*body {
     background-image: url("https://images.unsplash.com/photo-1619151467015-b0eb2ed59b80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
    }
 */
+
+
 div#resultsRandomContainer .hidden{
     visibility: hidden;
 }
@@ -122,3 +116,77 @@ h2{
     font-display: bold;
 
 }
+/* --------2ND PAGE BUTTONS FAND/SM------------------------- */
+#surpriseMe{
+    color: black;
+    background-color:#e2afe9;
+    border: 2px solid black;
+}
+#surpriseBtn{
+    color:black;
+    background-color:  rgb(199, 205, 24);
+    border: 2px solid black;
+
+}
+/* ----------------------------------------------------- */
+
+}
+/* ----CREATE DRINK FORM------------- */
+#newDrinkBtn{
+  border: 2px outset rgb(0, 0, 0);
+  padding: 25px;
+  margin: 20px;
+  text-shadow: 3px 3px 4px rgb(199, 205, 24);
+  background: #e2afe9;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-family: "Playwrite CU", cursive;
+  padding: 5%;
+  text-align: center;
+}
+
+#alcoholDropdown{
+    padding: 5px 100px
+}
+#ingredientDropdown{
+    padding: 5px 100px
+}
+#formModalLabel{
+    text-shadow: 3px 3px 4px rgb(199, 205, 24);
+    color:  rgb(0, 0, 0);
+}
+/* ----------------- */
+/* ------REVIEW A DRINK--------- */
+#drinkCabinetContainer{
+   
+    color: black;
+    background-color:#ffffff;
+    border: 12px solid black;
+    height: 600px;
+    width: 400px;
+    padding: 25px;
+}
+
+#drinkReview{
+    background-color:#e2afe9;
+    color: #000;
+    border: 2px solid rgb(0, 0, 0);
+    
+}
+/* -----REVIEW FORM-------- */
+#reviewBtn{
+    color: black;
+    background-color:#e2afe9;
+    border: 2px solid rgb(0, 0, 0);
+    
+}
+/* ------TYPOGRAPHY FOR REVIEW FORUM--------- */
+#drinkName{
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 4px rgb(199, 205, 24);
+}
+#dateTried{
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 4px #e2afe9;
+}
+/* ----------------- */

@@ -27,13 +27,13 @@
         <div class="row">
         <div class="containter-fluid col-lg-4">
             <div class="text-center mb-5 pt-3">
-                <button id="supriseMe"class="btn btn-success col-lg-4" data-bs-toggle="modal" data-bs-target="#formModal">Find a new drink</button>
+                <button id="surpriseMe"class="btn btn-success col-lg-4" data-bs-toggle="modal" data-bs-target="#formModal">Find A New Drink</button>
             </div>
             <div class="text-center mb-5 pt-3">
-                <button type="button" class="btn btn-primary col-lg-4" id="surpriseBtn">Surprise me!</button>
+                <button type="button" class="btn btn-primary col-lg-4" id="surpriseBtn">Surprise Me!</button>
                 <div class="hidden" id="resultsRandomContainer">
                     <div class="title-area hidden">
-                        <h3 class="hidden ">Order up!</h3>
+                        <h3 class="hidden ">Order Up!</h3>
                         <span id="closeX" class="hidden">X</span>
                     </div>
                     <div id="random-drink"></div>
@@ -73,7 +73,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="randomDrinkModal">Order up!</h5>
+                              <h5 class="modal-title" id="randomDrinkModal">Order Up!</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div id="randomResDiv">
@@ -99,39 +99,40 @@
         <div>
             <h4 class="text-center cabinetLabel">Your Drink Cabinet</h4>
             <div class="text-center p-2">
+              <div class="col-lg-12" id="reviewContainer">
+              </div>
                 <button type="button" class="btn btn-primary"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal"> Review a Drink!
+                    data-bs-toggle="modal" id="drinkReview" data-bs-target="#exampleModal"> Review A Drink!
                 </button>
-            <div class="col-lg-12" id="reviewContainer">
-            </div>
+            
             </div>
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <form id="reviewForm">
                       <div class="modal-header">
-                        <h1 class="modal-title" id="exampleModalLabel">Notes to remember if you liked the drink</h1>
+                        <h1 class="modal-title" id="exampleModalLabel">Notes To remember If You Liked The Drink</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         <div class="topLabel row">
                           <label for="drinkName" class="col p-1">Drink Name</label>
-                          <label for="tryDate" class="col p-1"> Date tried</label>
+                          <label for="tryDate" class="col p-1"> Date Tried</label>
                         </div>
                         <div class="topInput row">
                           <input type="text" class="col p-1" id="drinkName" name="drinkName"><br>
                           <input type="date" class="col p-1" id="dateTried" name="dateTried"><br>
                         </div>
                         <div class="contentLabel row">
-                          <label for="reviewDetails" class="col p-1">Thoughts about the drink - including any changes you would make</label>
+                          <label for="reviewDetails" class="col p-1">Thoughts about the drink - including any changes you would make?</label>
                         </div>
                         <div class="contentInput row">
                           <input type="content" class="col p-1" id="reviewDetails" name="reviewDetails">
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Never mind</button>
-                        <button type="submit" id="reviewBtn" class="btn btn-primary" data-bs-dismiss="modal">Submit review</button>
+                        <button type="button" id="noDrink" class="btn btn-secondary" data-bs-dismiss="modal">Never Mind</button>
+                        <button type="submit" id="reviewBtn" class="btn btn-primary" data-bs-dismiss="modal">Submit Review</button>
                       </div>
                     </form>
                   </div>
