@@ -8,6 +8,12 @@ Aiden Nelson, Dan Heer, Kyle O'connor, Lothy Gresser
 
 #screenshot of the pages
 
+![Screen Shot 2024-07-18 at 9 49 00 AM](https://github.com/user-attachments/assets/8d22c159-abf8-4b5b-9e73-c8c241473420)
+
+
+![Screen Shot 2024-07-18 at 9 49 09 AM](https://github.com/user-attachments/assets/8bb55fc8-7aa2-4ff8-8093-9697239f2acf)
+
+
 
 GROUP DOCUMENT: https://docs.google.com/document/d/14X25O209fVwvDH1__Ma7Peq8EwfemSvMXL2cLqir328/edit
 Gary's document for the project: https://docs.google.com/document/d/1qafueKF0-zxFkzEecv4V1kVM83wloy8OMprNsN6nWjQ/edit
