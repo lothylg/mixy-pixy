@@ -192,13 +192,8 @@ getDataFromApi();
 //calls / event listeners
 surpriseMe.addEventListener("click", function(event){
   console.log("click")
+  randomDrinkDiv.innerHTML = "";
   getRandomDrinkApi();
 })
 
-closeSpan.addEventListener('click', function(event)
-  let currentMode = document.getElementById('resultsRandomContainer');
-  if(currentMode.class === hidden){
-    currentMode.class = visible;
-  }
 
-)
