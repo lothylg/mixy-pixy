@@ -6,6 +6,9 @@ Aiden Nelson, Dan Heer, Kyle O'connor, Lothy Gresser
 
 #Link to the deployed site
 
+Deployed site: https://lothylg.github.io/mixy-pixy/
+GitHub repository: https://github.com/lothylg/mixy-pixy
+
 #screenshot of the pages
 
 ![Screen Shot 2024-07-18 at 9 49 00 AM](https://github.com/user-attachments/assets/8d22c159-abf8-4b5b-9e73-c8c241473420)
