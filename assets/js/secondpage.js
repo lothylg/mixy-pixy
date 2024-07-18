@@ -8,7 +8,7 @@ const reviewSubmitBtn = document.getElementById('reviewBtn');
 let existingReviews = localStorage.getItem('drinkThoughts') || [];
 const drinkCard= $('#results')
 const resultsContainer= $('#resultsContainer')
-const newDrinkBtn= $('#newDrinkBtn')
+const newDrinkBtn= $('#newDrinkBtn').on('submit', newDrinkResults)
 
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
@@ -36,7 +36,11 @@ function cardPrimary(){
         console.log(cardBodyHtml)
         resultsContainer.append(cardBodyHtml)
     }
-    
+}
+
+// function addNewDrink(){
+//  newDrinkBtn.addEventListener('submit',newDrinkResults)
+// }
 
 
 // { name: "", measure: "" }
@@ -54,7 +58,7 @@ function printIngredients(arrOfIngredients){
 
 }
 
-}
+
     function printIngredients(arrOfIngredients){
 
         const listContainer = $("<ul>");
@@ -86,10 +90,8 @@ function newDrinkResults(){
         localStorage.clear()
         if(cardPrimary ===''){
             cardPrimary()
-          }
-        
-
-      })
+     }
+  })
 }
 
 //to do: once json has been parsed, append the information to the elements above 

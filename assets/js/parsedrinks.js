@@ -134,7 +134,7 @@ function displayFilteredDrinks(filteredDrinks) {
 }
 
 
-document.getElementById("drinkForm").addEventListener("submit", function(event) {
+
 
 function displayRandomDrink(drinkObj) {
 
@@ -190,15 +190,15 @@ getDataFromApi();
 // getRandomDrinkApi();
 
 //calls / event listeners
-surpriseMe.addEventListener("click", function(event){
-  console.log("click")
-  getRandomDrinkApi();
-})
+// surpriseMe.addEventListener("click", function(event){
+//   console.log("click")
+//   getRandomDrinkApi();
+// })
 
-closeSpan.addEventListener('click', function(event)
-  let currentMode = document.getElementById('resultsRandomContainer');
-  if(currentMode.class === hidden){
-    currentMode.class = visible;
-  }
+// closeSpan.addEventListener('click', function(event)
+//   let currentMode = document.getElementById('resultsRandomContainer');
+//   if(currentMode.class === hidden){
+//     currentMode.class = visible;
+//   }
 
-)
+// )
