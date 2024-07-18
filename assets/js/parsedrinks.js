@@ -110,6 +110,7 @@ function populateIngredientDropdown() {
 }
 
 function searchByAlcoholAndIngredients(alcoholType, ingredientName) {
+  
   const filteredDrinks = alldrinks.filter(drink => {
     const hasAlcohol = drink.alcohol === alcoholType;
     const hasIngredient = drink.ingredients.some(ingredient => ingredient.name === ingredientName);
@@ -118,6 +119,7 @@ function searchByAlcoholAndIngredients(alcoholType, ingredientName) {
 
   localStorage.setItem("filteredDrinks", JSON.stringify(filteredDrinks));
   displayFilteredDrinks(filteredDrinks);
+
 }
 
 function displayFilteredDrinks(filteredDrinks) {

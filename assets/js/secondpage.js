@@ -13,7 +13,7 @@ const ughBtn = document.getElementById('ughBtn');
 const oneAlcInput = document.getElementById('alcoholDropdown');
 const ingDdInput = document.getElementById('ingredientDropdown');
 
-ughBtn.addEventListener("click", cardPrimary)
+
 
 // function secondPageDrink(){
 //     const alc = document.create
@@ -54,7 +54,7 @@ function cardPrimary(){
     const drinkCard = readDrinkFromStorage();
     console.log(drinkCard)
 
-    for ( let i=0; i< drinkCard.length; i++){
+    for ( let i=0; i< drinkCard?.length; i++){
         const currCard = drinkCard[i]
         const cardBodyHtml = $("<div class='card-body'>")
         // cardBodyHtml.html(`
@@ -218,53 +218,54 @@ function addReview(event){
     const existingReviews = localStorage.getItem('existingReviews') || [];
 
     const reviews = existingReviews ? JSON.parse(existingReviews) : [];
-if (existingReviews){
+    console.log(reviews)
+
+    if (reviews !== null){
+
+        const cabinet = document.getElementById('reviewContainer');
+
+        // ? Read user input from the form
+        const name = dNameInput.val().trim();
+        const content = thoughtsInput.val(); 
+        const dateTried = triedInput.val(); 
 
 
-    const cabinet = document.getElementById('reviewContainer');
+        const newReview = {
+            reviewId: crypto.randomUUID(),
+            drinkName: name,
+            dateTried: dateTried,
+            review: content
+        }
 
-    // ? Read user input from the form
-    const name = dNameInput.val().trim();
-    const content = thoughtsInput.val(); 
-    const dateTried = triedInput.val(); 
+        reviews.push(newReview);
+        localStorage.setItem('existingReviews', JSON.stringify(reviews))
+
+        populateReviews();
+
+    }else {
+
+        const cabinet = document.getElementById('reviewContainer');
+
+        // ? Read user input from the form
+        const name = dNameInput.val().trim();
+        const content = thoughtsInput.val(); 
+        const dateTried = triedInput.val(); 
 
 
-    const newReview = {
-        reviewId: crypto.randomUUID(),
-        drinkName: name,
-        dateTried: dateTried,
-        review: content
+        const newReview = [{
+            reviewId: crypto.randomUUID(),
+            drinkName: name,
+            dateTried: dateTried,
+            review: content
+        }]
+        localStorage.setItem('existingReviews', JSON.stringify(newReview))
+
+        populateReviews();
+
+        dNameInput.val('');
+        triedInput.val('');
+        triedInput.val('');
     }
-
-    reviews.push(newReview);
-    localStorage.setItem('existingReviews', JSON.stringify(reviews))
-
-    populateReviews();
-
-}else {
-
-    const cabinet = document.getElementById('reviewContainer');
-
-    // ? Read user input from the form
-    const name = dNameInput.val().trim();
-    const content = thoughtsInput.val(); 
-    const dateTried = triedInput.val(); 
-
-
-    const newReview = {
-        reviewId: crypto.randomUUID(),
-        drinkName: name,
-        dateTried: dateTried,
-        review: content
-    }
-    localStorage.setItem('existingReviews', JSON.stringify(newReview))
-
-    populateReviews();
-
-    dNameInput.val('');
-    triedInput.val('');
-    triedInput.val('');
-}
 }
 
 
