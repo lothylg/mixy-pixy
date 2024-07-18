@@ -10,11 +10,53 @@ const drinkCard= $('#results')
 const resultsContainer= $('#resultsContainer')
 const newDrinkBtn= $('#newDrinkBtn').on('submit', newDrinkResults)
 
+const ughBtn = document.getElementById('ughBtn');
+const oneAlcInput = document.getElementById('alcoholDropdown');
+const ingDdInput = document.getElementById('ingredientDropdown');
+
+ughBtn.addEventListener("click", cardPrimary)
+
+// function secondPageDrink(){
+//     const alc = document.create
+    // const drinkCard = readDrinkFromStorage();
+    // console.log(drinkCard)
+
+    // for ( let i=0; i< drinkCard.length; i++){
+    //     const currCard = drinkCard[i]
+    //     const cardBodyHtml = $("<div class='card-body'>")
+    //     // cardBodyHtml.html(`
+    //     //     <p>Hello</p>
+    //     // `)   
+
+
+    //     // const cardBody = $('<div>').addClass ('card-body')
+    //     const cardImg = $('<img>').addClass('card-img-top').attr("src", currCard.image)//apend 
+    //     const cardDrinkName= $('<p>').addClass('cardTitle').text(currCard.drink)//drink name
+    //     const cardDrinkInstructions= $('<p>').addClass('card-text').text(currCard.instructions) //append drink info to ext area
+
+    //     // get ingredients from function below
+    //     const ingredients = printIngredients(currCard.ingredients)
+
+    //     cardBodyHtml.innerHTML="";
+    //     cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkInstructions, ingredients)
+    //     console.log(cardBodyHtml)
+    //     resultsContainer.append(cardBodyHtml)
+    // }
+// }
+// $('#newDrinkBtn').on('click', cardPrimary(){
+//     console.log("click");
+//     cardBodyHTM.innerHTML='';
+
+// })
+
+
+
 //Functions
 //This function needs to be called once having loaded the second page, or if the search has been entered onto the 
 function cardPrimary(){
     const drinkCard = readDrinkFromStorage();
     console.log(drinkCard)
+
     for ( let i=0; i< drinkCard.length; i++){
         const currCard = drinkCard[i]
         const cardBodyHtml = $("<div class='card-body'>")
@@ -30,7 +72,6 @@ function cardPrimary(){
 
         // get ingredients from function below
         const ingredients = printIngredients(currCard.ingredients)
-
 
         cardBodyHtml.append(cardImg, cardDrinkName, cardDrinkInstructions, ingredients)
         console.log(cardBodyHtml)
@@ -176,9 +217,11 @@ function addReview(event){
     event.preventDefault(); 
     console.log("add")
 
-    const existingReviews = localStorage.getItem('existingReviews');
+    const existingReviews = localStorage.getItem('existingReviews') || [];
 
     const reviews = existingReviews ? JSON.parse(existingReviews) : [];
+if (existingReviews){
+
 
     const cabinet = document.getElementById('reviewContainer');
 
@@ -200,11 +243,32 @@ function addReview(event){
 
     populateReviews();
 
+}else {
+
+    const cabinet = document.getElementById('reviewContainer');
+
+    // ? Read user input from the form
+    const name = dNameInput.val().trim();
+    const content = thoughtsInput.val(); 
+    const dateTried = triedInput.val(); 
+
+
+    const newReview = {
+        reviewId: crypto.randomUUID(),
+        drinkName: name,
+        dateTried: dateTried,
+        review: content
+    }
+    localStorage.setItem('existingReviews', JSON.stringify(newReview))
+
+    populateReviews();
+
     dNameInput.val('');
     triedInput.val('');
     triedInput.val('');
-
 }
+}
+
 
 
 
@@ -239,7 +303,7 @@ $(document).ready(function() {
 })
 
 function newDrinkResults(){
-    $("#newDrinkBtn").click(function(){
+(function(){
         localStorage.clear()
         if(cardPrimary ===''){
             cardPrimary()
@@ -247,8 +311,4 @@ function newDrinkResults(){
         
 
       })
-}
-
-
-//const closeBtn = document.getElementbyId('randCloseBtn');
-//closeBtn.addEventListener('click')
+    }
