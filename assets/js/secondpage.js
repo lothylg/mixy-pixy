@@ -238,7 +238,17 @@ $(document).ready(function() {
     populateReviews();
 })
 
+function newDrinkResults(){
+    $("#newDrinkBtn").click(function(){
+        localStorage.clear()
+        if(cardPrimary ===''){
+            cardPrimary()
+          }
+        
+
+      })
+}
 
 
-
-
+//const closeBtn = document.getElementbyId('randCloseBtn');
+//closeBtn.addEventListener('click')
