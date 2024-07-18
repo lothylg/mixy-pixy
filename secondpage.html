@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="./assets/css/both.css"/>
 </head>
 <body>
+
+  <!-- STYLE BUTTONS ---------------------------------------------------------------------------------------------------------------->
     <div class="containter-fluid col-lg-12">
         <div class="row">
         <div class="containter-fluid col-lg-4">
@@ -39,6 +41,9 @@
                     <div id="random-drink"></div>
                 </div>
             </div>
+            <h4 class="text-center cabinetLabel">Your drink cabinet</h4>
+            <button type="button" class="btn btn-primary"
+            data-bs-toggle="modal" data-bs-target="#exampleModal"> Review a drink!</button>
             <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                       <div class="modal-content">
@@ -46,6 +51,7 @@
                               <h5 class="modal-title" id="formModalLabel">Create Drink</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
+ <!-----------------------------------------------------------------------------------------------------------------------------  -->
                           <form id="drinkForm">
                             <label for="alcoholDropdown">Select Alcohol:</label>
                             <select id="alcoholDropdown">
@@ -89,18 +95,18 @@
                   </div>
 
 
-                    <!-- <h2 class="text-center col-md-12 p-2">this is a drink result</h2> -->
-                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sequi provident eveniet distinctio optio vel minima? Id obcaecati soluta sequi accusamus quos molestias, ducimus quo, sint hic deleniti culpa blanditiis!</p> -->
+                    <h2 class="text-center col-md-12 p-2">this is a drink result</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sequi provident eveniet distinctio optio vel minima? Id obcaecati soluta sequi accusamus quos molestias, ducimus quo, sint hic deleniti culpa blanditiis!</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="containter-fluid col-lg-4 border" id="drinkCabinetContainer">
         <div>
-            <h4 class="text-center cabinetLabel">Your Drink Cabinet</h4>
+            <h4 class="text-center cabinetLabel">Your drink cabinet</h4>
             <div class="text-center p-2">
                 <button type="button" class="btn btn-primary"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal"> Review a Drink!
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"> Review a drink!
                 </button>
             <div class="col-lg-12" id="reviewContainer">
             </div>

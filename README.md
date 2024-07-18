@@ -2,7 +2,7 @@
 This site is meant to spice up your cocktail game by providing option based on the alcohol and ingredients that you have on hand. The user will be able select the ingredients on the main page, then choose drinks on the second page. After they have tried the drink, they can manage their "drink cabinet" that will hold their thoughts about the drink and when they tried it. The user can also choose to make a different drink right on the second page. 
 
 #Team-Members
-Aiden Nelson, Dan Heer, Kyle O'connor, Lothy Gresser
+Aiden Nelson, Dan Heer, Kyle O'Connor, Lothy Gresser
 
 #Link to the deployed site
 
